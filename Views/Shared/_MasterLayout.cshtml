@@ -1,0 +1,50 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <link href="~/Content/mystyle.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+</head>
+<body>
+    <div id="div-top">
+        <img src="~/Images/logo.jpg" height="300px" width="100%" />
+    </div>
+    <hr width=100%" color="red" size="5px">
+    <div id="div-main">
+        <div id="div-left">
+            <nav id="menu">
+                <ul class="main-menu">
+                    <li>
+                        <a href="#">Quản lí sản phẩm</a>
+                        <ul>
+                            <li><a class="nav-link" href="https://localhost:44308/Hàng_Hóa">Danh mục sản phẩm</a></li>
+                            <li><a class="nav-link" href="~/Loại">Danh mục loại</a></li>
+                            <li><a class="nav-link" href="~/ĐVT">Danh mục đơn vị tính</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#">Quản lí bán hàng</a>
+                        <ul>
+                            <li><a href="https://localhost:44308/H%C3%A0ng_H%C3%B3a/Quanlyban">Bán Hàng</a></li>
+                            <li> <a href="https://localhost:44308/Hàng_Hóa/Create">Tạo hóa đơn</a></li>                          
+                            <li><a href="~/Hóa_đơn">Danh sách hóa đơn</a></li>
+
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#">Quản lí tài chính</a>
+                        <ul>
+                            <li><a href="#">Báo cáo thống kê</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+        <div id="div-containt">
+            @RenderBody()
+        </div>
+    </div>
+</body>
+</html>

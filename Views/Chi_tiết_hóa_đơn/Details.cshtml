@@ -1,0 +1,59 @@
+﻿@model Demo_CNPM.Models.Chi_tiết_hóa_đơn
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_MasterLayout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Chi_tiết_hóa_đơn</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.SL)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SL)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Đơn_giá)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Đơn_giá)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Thành_tiền)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Thành_tiền)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Hóa_đơn.ID_NV)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Hóa_đơn.ID_NV)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Hàng_Hóa.Tên)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Hàng_Hóa.Tên)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

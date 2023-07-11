@@ -1,0 +1,47 @@
+﻿
+@model IEnumerable<Demo_CNPM.Models.Hàng_Hóa>
+@{
+    ViewBag.Title = "Quanlyban";
+    Layout = "~/Views/Shared/_MasterLayout.cshtml";
+}
+
+<h2>Quản Lý Bán Hàng</h2>
+
+<div class="container" style=" background-image:; background-repeat: no-repeat; background-size:cover">
+    <h2 style="font-size:40px;color:brown;text-align:center"><b>MUA HÀNG</b></h2>
+    <div style="border: 3px solid #ff6a00; height: 70px; text-align: center; padding: 15px;">
+
+        @using (Html.BeginForm("Quanlyban", "Hàng_Hóa", FormMethod.Get))
+        {
+            <table>
+
+                <td>
+                    <span style="color:brown"><b> Tên Sản phẩm :</b></span> <input type="text" name="SearchString" />
+                    <input type="submit" value="Tìm kiếm" class="btn btn-warning" />
+                </td>
+            </table>
+
+        }
+    </div>
+    <style>
+    </style>
+    <div class="row">
+        @foreach (var pro in Model)
+        {
+            <div class="col-sm-12 col-sm-6 col-md-4 col-lg-3">
+                <div class="card-pro">
+
+                    <img src="~/images/@pro.Hinh_anh" width="200" height="250" />
+                    <p style="font-size:17px;color:darkorchid"><b>@Html.DisplayFor(model => pro.Tên)</b></p>
+                    <p>Đơn giá : <font color="red"><i style="font-size:20px">@Html.DisplayFor(model => pro.Giá_bán)</i></font></p>
+                    <p>Số lượng tồn  : <font color="red"><i style="font-size:20px">@Html.DisplayFor(model => pro.SL_ton)</i></font></p>
+                    <p>Loại  : <font color="red"><i style="font-size:20px">@Html.DisplayFor(model => pro.ID_loại)</i></font></p>
+                    <p style="text-align: center;">
+                        @Html.ActionLink("Details", "Details", new { id = pro.ID }, new { @class = "btn btn-primary" }) |
+                        <a href="/ShoppingCart/AddToCart/@pro.ID" class="btn btn-danger"> Mua </a>
+                    </p>
+                </div>
+            </div>
+        }
+    </div>
+</div>

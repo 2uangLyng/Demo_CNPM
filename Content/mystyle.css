@@ -1,0 +1,28 @@
+﻿body {
+    margin: 0;
+}
+/*masterlayout*/
+
+#div-top {
+    height: 300px;
+    background-color: rgb(255, 229, 229);
+}
+
+#div-main {
+    display: flex;
+    flex-direction: row;
+}
+
+#div-left {
+    width: 20%;
+    height: auto;
+    font-family: Arial;
+    font-size: 20px;
+    background-color: rgb(255, 234, 234);
+}
+
+#div-containt {
+    width: 80%;
+    height: auto;
+    background-color: rgb(255, 206, 206);
+}

@@ -1,0 +1,52 @@
+﻿@model IEnumerable<Demo_CNPM.Models.Hóa_đơn>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_MasterLayout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Ngày_bán)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Tổng_SL)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Tổng_tiền)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Nhân_viên.Tên)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Ngày_bán)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Tổng_SL)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Tổng_tiền)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Nhân_viên.Tên)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
+        </td>
+    </tr>
+}
+
+</table>
