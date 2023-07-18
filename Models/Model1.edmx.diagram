@@ -4,23 +4,22 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="8fe32a1c05cb4cbe8b1a9140722d1f57" Name="Diagram1">
+      <Diagram DiagramId="b9e19e32f90048e1a6f537cdd49ad0e3" Name="Diagram1">
         <EntityTypeShape EntityType="taphoa_finalModel.Chi_tiết_hóa_đơn" Width="1.5" PointX="5.25" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="taphoa_finalModel.ChucNang" Width="1.5" PointX="0.75" PointY="11.875" IsExpanded="true" />
         <EntityTypeShape EntityType="taphoa_finalModel.ĐVT" Width="1.5" PointX="0.75" PointY="1.875" IsExpanded="true" />
         <EntityTypeShape EntityType="taphoa_finalModel.Hàng_Hóa" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
         <EntityTypeShape EntityType="taphoa_finalModel.Hóa_đơn" Width="1.5" PointX="3" PointY="8.5" IsExpanded="true" />
         <EntityTypeShape EntityType="taphoa_finalModel.Loại" Width="1.5" PointX="0.75" PointY="5.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="taphoa_finalModel.Nhân_viên" Width="1.5" PointX="0.75" PointY="8.625" IsExpanded="true" />
-        <AssociationConnector Association="taphoa_finalModel.FK__Chi_tiết___ID_HD__5812160E" ManuallyRouted="false" />
-        <AssociationConnector Association="taphoa_finalModel.FK__Chi_tiết___ID_HH__571DF1D5" ManuallyRouted="false" />
-        <AssociationConnector Association="taphoa_finalModel.FK__Hàng_Hóa__ID_DVT__5441852A" ManuallyRouted="false" />
-        <AssociationConnector Association="taphoa_finalModel.FK__Hàng_Hóa__ID_loạ__534D60F1" ManuallyRouted="false" />
-        <AssociationConnector Association="taphoa_finalModel.FK__Hóa_đơn__ID_NV__5070F446" ManuallyRouted="false" />
-        <EntityTypeShape EntityType="taphoa_finalModel.ChucNang" Width="1.5" PointX="0.75" PointY="12.125" />
-        <EntityTypeShape EntityType="taphoa_finalModel.PhanQuyen" Width="1.5" PointX="3" PointY="11.875" />
-        <EntityTypeShape EntityType="taphoa_finalModel.sysdiagram" Width="1.5" PointX="3.375" PointY="5.75" />
-        <AssociationConnector Association="taphoa_finalModel.FK__PhanQuyen__IdChu__6E01572D" />
-        <AssociationConnector Association="taphoa_finalModel.FK__PhanQuyen__IdNV__6D0D32F4" />
+        <EntityTypeShape EntityType="taphoa_finalModel.Nhân_viên" Width="1.5" PointX="0.75" PointY="8.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="taphoa_finalModel.PhanQuyen" Width="1.5" PointX="3" PointY="5.625" IsExpanded="true" />
+        <AssociationConnector Association="taphoa_finalModel.FK__Chi_tiết___ID_HD__45F365D3" ManuallyRouted="false" />
+        <AssociationConnector Association="taphoa_finalModel.FK__Chi_tiết___ID_HH__44FF419A" ManuallyRouted="false" />
+        <AssociationConnector Association="taphoa_finalModel.FK_PhanQuyen_ChucNang" ManuallyRouted="false" />
+        <AssociationConnector Association="taphoa_finalModel.FK__Hàng_Hóa__ID_DVT__4222D4EF" ManuallyRouted="false" />
+        <AssociationConnector Association="taphoa_finalModel.FK__Hàng_Hóa__ID_loạ__412EB0B6" ManuallyRouted="false" />
+        <AssociationConnector Association="taphoa_finalModel.FK__Hóa_đơn__ID_NV__3E52440B" ManuallyRouted="false" />
+        <AssociationConnector Association="taphoa_finalModel.FK_PhanQuyen_Nhân_viên" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
