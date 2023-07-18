@@ -20,7 +20,7 @@ namespace Demo_CNPM.Models
             this.Chi_tiết_hóa_đơn = new HashSet<Chi_tiết_hóa_đơn>();
         }
     
-        public string ID { get; set; }
+        public int ID { get; set; }
         public string ID_NV { get; set; }
         public System.DateTime Ngày_bán { get; set; }
         public int Tổng_SL { get; set; }

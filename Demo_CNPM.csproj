@@ -134,10 +134,12 @@
     <Compile Include="Controllers\Hàng_HóaController.cs" />
     <Compile Include="Controllers\Hóa_đơnController.cs" />
     <Compile Include="Controllers\LoạiController.cs" />
+    <Compile Include="Controllers\ShoppingCartController.cs" />
     <Compile Include="Controllers\ĐVTController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Cart.cs" />
     <Compile Include="Models\Chi_tiết_hóa_đơn.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -174,9 +176,6 @@
     <Compile Include="Models\PhanQuyen.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\sysdiagram.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\ĐVT.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -199,10 +198,10 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\bootstrap.rtl.css" />
     <Content Include="Content\bootstrap.rtl.min.css" />
+    <Content Include="Content\item.css" />
     <Content Include="Content\mystyle.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
-    <Content Include="Content\Site.css" />
     <Content Include="Images\anh01.jpg" />
     <Content Include="Images\anh02.jpg" />
     <Content Include="Images\anh03.jpg" />
@@ -308,6 +307,11 @@
     <Content Include="Views\Chi_tiết_hóa_đơn\Details.cshtml" />
     <Content Include="Views\Chi_tiết_hóa_đơn\Edit.cshtml" />
     <Content Include="Views\Chi_tiết_hóa_đơn\Index.cshtml" />
+    <Content Include="Views\ShoppingCart\BagCart.cshtml" />
+    <Content Include="Views\ShoppingCart\EmptyCart.cshtml" />
+    <Content Include="Views\ShoppingCart\ShowCart.cshtml" />
+    <Content Include="Views\Hàng_Hóa\Proview.cshtml" />
+    <Content Include="Views\Shared\NormaLayout.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
