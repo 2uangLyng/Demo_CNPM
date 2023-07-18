@@ -13,7 +13,7 @@ namespace Demo_CNPM.Controllers
 {
     public class Hàng_HóaController : Controller
     {
-        private taphoa_finalEntities db = new taphoa_finalEntities();
+        private taphoa_finalEntities2 db = new taphoa_finalEntities2();
 
         // GET: Hàng_Hóa
         public ActionResult Index()
@@ -144,7 +144,15 @@ namespace Demo_CNPM.Controllers
             }
             return View(Hàng_Hóa.ToList());
         }
-
+        public ActionResult Proview(string SearchString)
+        {
+            var Hàng_Hóa = db.Hàng_Hóa.Include(p => p.Loại);
+            if (!String.IsNullOrEmpty(SearchString))
+            {
+                Hàng_Hóa = Hàng_Hóa.Where(s => s.Tên.Contains(SearchString));
+            }
+            return View(Hàng_Hóa.ToList());
+        }
         protected override void Dispose(bool disposing)
         {
             if (disposing)

@@ -14,8 +14,8 @@ namespace Demo_CNPM.Models
     
     public partial class Chi_tiết_hóa_đơn
     {
-        public string ID_HH { get; set; }
-        public string ID_HD { get; set; }
+        public int ID_HH { get; set; }
+        public int ID_HD { get; set; }
         public int SL { get; set; }
         public int Đơn_giá { get; set; }
         public int Thành_tiền { get; set; }

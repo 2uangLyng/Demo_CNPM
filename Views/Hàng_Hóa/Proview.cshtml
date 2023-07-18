@@ -1,0 +1,41 @@
+﻿@model IEnumerable<Demo_CNPM.Models.Hàng_Hóa>
+@{
+    ViewBag.Title = "Proview";
+    Layout = "~/Views/Shared/_MasterLayout.cshtml";
+}
+
+<h2 style="">Quản Lý Bán Hàng</h2>
+
+<div class="container" style=" background-image:; background-repeat: no-repeat; background-size:cover">
+    <h2 style="font-size:30px;color:brown;text-align:center"><b>danh sách hàng hóa</b></h2>
+    <div style="border: 3px solid #ff6a00; height: 70px; text-align: center; padding: 15px;">
+
+        @using (Html.BeginForm("Proview", "Hàng_Hóa", FormMethod.Get))
+        {
+            <table>
+
+                <td>
+                    <span style="color:brown"><b> Tên Sản phẩm :</b></span> <input type="text" name="SearchString" />
+                    <input type="submit" value="Tìm kiếm" class="btn btn-warning" />
+                </td>
+            </table>
+
+        }
+    </div>
+    <div class="row">
+        @foreach (var pro in Model)
+        {
+            <div class="col-sm-12 col-sm-6 col-md-4 col-lg-3">
+                <div class="">
+                    <a href="/ShoppingCart/AddToCart/@pro.ID">
+                        <img src="~/images/@pro.Hinh_anh" width="80" height="80" />
+                    </a>
+                    <p style="font-size:17px;color:darkorchid"><b>@Html.DisplayFor(model => pro.Tên)</b></p>
+                    <p>Đơn giá : <font color="red"><i style="font-size:20px">@Html.DisplayFor(model => pro.Giá_bán) VND</i></font></p>
+                </div>
+            </div>
+        }
+    </div>
+    <div style="width:700px; height:400px; background-color:aqua">
+        @Html.Action("ShowCart", "ShoppingCart")
+    </div>

@@ -12,7 +12,7 @@ namespace Demo_CNPM.Controllers
 {
     public class ĐVTController : Controller
     {
-        private taphoa_finalEntities db = new taphoa_finalEntities();
+        private taphoa_finalEntities2 db = new taphoa_finalEntities2();
 
         // GET: ĐVT
         public ActionResult Index()
