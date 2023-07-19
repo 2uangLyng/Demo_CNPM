@@ -13,7 +13,7 @@ namespace Demo_CNPM.Controllers
 {
     public class Hàng_HóaController : Controller
     {
-        private taphoa_finalEntities2 db = new taphoa_finalEntities2();
+        private taphoa_finalEntities3 db = new taphoa_finalEntities3();
 
         // GET: Hàng_Hóa
         public ActionResult Index()

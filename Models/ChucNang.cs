@@ -17,13 +17,13 @@ namespace Demo_CNPM.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public ChucNang()
         {
-            this.PhanQuyen = new HashSet<PhanQuyen>();
+            this.PhanQuyens = new HashSet<PhanQuyen>();
         }
     
         public int Id { get; set; }
         public string TenChucNang { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<PhanQuyen> PhanQuyen { get; set; }
+        public virtual ICollection<PhanQuyen> PhanQuyens { get; set; }
     }
 }
