@@ -13,10 +13,10 @@ namespace Demo_CNPM.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class taphoa_finalEntities2 : DbContext
+    public partial class taphoa_finalEntities3 : DbContext
     {
-        public taphoa_finalEntities2()
-            : base("name=taphoa_finalEntities2")
+        public taphoa_finalEntities3()
+            : base("name=taphoa_finalEntities3")
         {
         }
     
@@ -26,12 +26,13 @@ namespace Demo_CNPM.Models
         }
     
         public virtual DbSet<Chi_tiết_hóa_đơn> Chi_tiết_hóa_đơn { get; set; }
-        public virtual DbSet<ChucNang> ChucNang { get; set; }
+        public virtual DbSet<ChucNang> ChucNangs { get; set; }
         public virtual DbSet<ĐVT> ĐVT { get; set; }
         public virtual DbSet<Hàng_Hóa> Hàng_Hóa { get; set; }
         public virtual DbSet<Hóa_đơn> Hóa_đơn { get; set; }
         public virtual DbSet<Loại> Loại { get; set; }
         public virtual DbSet<Nhân_viên> Nhân_viên { get; set; }
-        public virtual DbSet<PhanQuyen> PhanQuyen { get; set; }
+        public virtual DbSet<PhanQuyen> PhanQuyens { get; set; }
+        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
     }
 }
