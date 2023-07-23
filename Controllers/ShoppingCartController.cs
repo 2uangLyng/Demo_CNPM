@@ -65,6 +65,8 @@ namespace Demo_CNPM.Controllers
             cart.Update_quantity(id_pro, _quantity);
             return RedirectToAction("ShowCart", "ShoppingCart");
         }
+
+
         public ActionResult CheckOut(FormCollection from)
         {
             try

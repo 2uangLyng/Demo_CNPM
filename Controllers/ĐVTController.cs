@@ -6,6 +6,7 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using Demo_CNPM.App_Start;
 using Demo_CNPM.Models;
 
 namespace Demo_CNPM.Controllers
@@ -15,12 +16,15 @@ namespace Demo_CNPM.Controllers
         private taphoa_finalEntities3 db = new taphoa_finalEntities3();
 
         // GET: ĐVT
+        [AdminAuthorize(idChucNang = 3)]
         public ActionResult Index()
+
         {
             return View(db.ĐVT.ToList());
         }
 
         // GET: ĐVT/Details/5
+        [AdminAuthorize(idChucNang = 3)]
         public ActionResult Details(string id)
         {
             if (id == null)
@@ -36,6 +40,7 @@ namespace Demo_CNPM.Controllers
         }
 
         // GET: ĐVT/Create
+        [AdminAuthorize(idChucNang = 3)]
         public ActionResult Create()
         {
             return View();
@@ -46,6 +51,7 @@ namespace Demo_CNPM.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [AdminAuthorize(idChucNang = 3)]
         public ActionResult Create([Bind(Include = "ID,Tên")] ĐVT đVT)
         {
             if (ModelState.IsValid)
@@ -59,6 +65,7 @@ namespace Demo_CNPM.Controllers
         }
 
         // GET: ĐVT/Edit/5
+        [AdminAuthorize(idChucNang = 3)]
         public ActionResult Edit(string id)
         {
             if (id == null)
@@ -78,6 +85,7 @@ namespace Demo_CNPM.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [AdminAuthorize(idChucNang = 3)]
         public ActionResult Edit([Bind(Include = "ID,Tên")] ĐVT đVT)
         {
             if (ModelState.IsValid)
@@ -90,6 +98,7 @@ namespace Demo_CNPM.Controllers
         }
 
         // GET: ĐVT/Delete/5
+        [AdminAuthorize(idChucNang = 3)]
         public ActionResult Delete(string id)
         {
             if (id == null)
@@ -107,6 +116,7 @@ namespace Demo_CNPM.Controllers
         // POST: ĐVT/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [AdminAuthorize(idChucNang = 3)]
         public ActionResult DeleteConfirmed(string id)
         {
             ĐVT đVT = db.ĐVT.Find(id);

@@ -126,9 +126,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App_Start\AdminAuthorize.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\BaoLoiController.cs" />
     <Compile Include="Controllers\Chi_tiết_hóa_đơnController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\Hàng_HóaController.cs" />
@@ -315,6 +317,9 @@
     <Content Include="Views\ShoppingCart\ShowCart.cshtml" />
     <Content Include="Views\Hàng_Hóa\Proview.cshtml" />
     <Content Include="Views\Shared\NormaLayout.cshtml" />
+    <Content Include="Views\Hàng_Hóa\DangNhap.cshtml" />
+    <Content Include="Views\Hàng_Hóa\DangXuat.cshtml" />
+    <Content Include="Views\BaoLoi\KhongCoQuyen.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
