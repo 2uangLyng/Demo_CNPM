@@ -10,7 +10,7 @@ namespace Demo_CNPM.Controllers
 {
     public class ShoppingCartController : Controller
     {
-        private taphoa_finalEntities3 db = new taphoa_finalEntities3();
+        private taphoa_finalEntities4 db = new taphoa_finalEntities4();
         public ActionResult Showcart()
         {
             if (Session["Cart"] == null)
@@ -35,14 +35,14 @@ namespace Demo_CNPM.Controllers
             {
                 GetCart().Add_Product_Cart(_pro);
             }
-            return RedirectToAction("ShowCart", "ShoppingCart");
+            return RedirectToAction("Proview", "Hàng_Hóa");
         }
 
         public ActionResult RemoveCart(int id)
         {
             Cart cart = Session["Cart"] as Cart;
             cart.Remove_CartItem(id);
-            return RedirectToAction("ShowCart", "ShoppingCart");
+            return RedirectToAction("Proview", "Hàng_Hóa");
         }
         public PartialViewResult BagCart()
         {
@@ -63,7 +63,7 @@ namespace Demo_CNPM.Controllers
             int id_pro = int.Parse(form["idPro"]);
             int _quantity = int.Parse(form["CartQuantity"]);
             cart.Update_quantity(id_pro, _quantity);
-            return RedirectToAction("ShowCart", "ShoppingCart");
+            return RedirectToAction("Proview", "Hàng_Hóa");
         }
 
 
@@ -81,7 +81,7 @@ namespace Demo_CNPM.Controllers
                     _oder_detail.ID_HH = item._product.ID;
                     _oder_detail.SL = item._quantity;
                     db.Chi_tiết_hóa_đơn.Add(_oder_detail);
-                    foreach (var p in db.Hàng_Hóa.Where(s => s.ID == _oder_detail.ID_HH))
+                    foreach (var p in db.Hàng_Hóa.Where(s => s.ID == _oder_detail.ID_HD))
                     {
                         var update_quan_pro = p.SL_ton - item._quantity;
                         p.SL_ton = update_quan_pro;

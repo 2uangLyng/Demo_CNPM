@@ -11,7 +11,7 @@ namespace Demo_CNPM.App_Start
 {
     public class AdminAuthorize:AuthorizeAttribute
     {
-        public taphoa_finalEntities3 db = new taphoa_finalEntities3();
+        public taphoa_finalEntities4 db = new taphoa_finalEntities4();
 
         public int idChucNang { get; set; }
         public override void OnAuthorization(AuthorizationContext filterContext)
@@ -21,7 +21,7 @@ namespace Demo_CNPM.App_Start
             Nhân_viên nvSession = (Nhân_viên)HttpContext.Current.Session["user"];
             if(nvSession != null) 
             {
-                taphoa_finalEntities3 db = new taphoa_finalEntities3();
+                taphoa_finalEntities4 db = new taphoa_finalEntities4();
 
                 var count = db.PhanQuyens.Count(m => m.IdNV == nvSession.ID & m.IdChucNang == idChucNang);
 

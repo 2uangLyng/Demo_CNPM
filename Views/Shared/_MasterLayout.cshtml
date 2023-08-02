@@ -19,7 +19,7 @@
 
         /* CSS cho sidebar bên trái */
         .main-container {
-            max-width: 1200px; /* Đặt chiều rộng tối đa cho container */
+            max-width: 100%; /* Đặt chiều rộng tối đa cho container */
             margin: 0 auto; /* Đặt lề tự động để căn giữa container */
             padding: 20px; /* Đặt padding để tạo khoảng cách giữa nội dung và viền container */
         }
@@ -46,14 +46,24 @@
             transition: left 0.3s ease; /* Thêm hiệu ứng chuyển đổi mềm mượt */
         }
 
+        #btn-close{
+            font-size: 30px;
+            margin-left: 150px;
+
+        }
+
+            #btn-close:hover {
+]                color: blue; /* Màu chữ thay đổi khi hover */
+            }
+
         #btn-bger {
             position: absolute; /* Dùng "position: fixed" để giữ div-top ở vị trí cố định trên trang */
             cursor:pointer;
             font-size: 30px;
-            margin-left: 250px;
+            margin-left: 30px;
         }
         #btn-bger:hover{
-            color:blue;
+                        color: blue; /* Màu chữ thay đổi khi hover */
         }
 
         #menu {
@@ -81,7 +91,8 @@
                         color: #fff; /* Màu chữ thay đổi khi hover */
                     }
 
-        /* CSS cho phần còn lại của layout của bạn */
+       
+
         /* ... */
     </style>
 
@@ -96,20 +107,24 @@
 
     <hr width=100%" color="red" size="5px">
 
-    <i id="btn-bger" class="fa-solid fa-bars" onclick="toggleSidebar()"></i>
-    <div id="div-right" style="text-align:right; padding-right : 20px">
-        <div ">
+    
+    <div style="display: flex">
+        <div><i id="btn-bger"  class="fa-solid fa-bars" onclick="toggleSidebar()"></i></div>
+        <div style="flex : 1"></div>
+        <div id="div-right" style="display:flex">
             @{
                 var user = (Demo_CNPM.Models.Nhân_viên)HttpContext.Current.Session["user"];
                 <span>@user.Tên</span>
             }
         </div>
     </div>
+
     <div id="div-main">
         <div id="div-left">
             <nav id="menu">
 
                 <ul class="main-menu">
+                    <i id="btn-close" class="fa fa-window-close-o" onclick="closeSidebar()" ></i>
                     <li>
                         <a href="#">Quản lí sản phẩm</a>
                         <ul>
@@ -119,11 +134,9 @@
                         </ul>
                     </li>
                     <li>
-                        <a href="https://localhost:44308/H%C3%A0ng_H%C3%B3a/Proview#">Quản lí bán hàng</a>
+                        <a href="#">Quản lí bán hàng</a>
                         <ul>
-                            <li><a href="https://localhost:44308/H%C3%A0ng_H%C3%B3a/Quanlyban">Bán Hàng</a></li>
-                            <li> <a href="https://localhost:44308/Hóa_đơn/Create
-                                    ">Tạo hóa đơn</a></li>
+                            <li><a href="https://localhost:44308/H%C3%A0ng_H%C3%B3a/Proview#">Bán Hàng</a></li>
                             <li><a href="~/Hóa_đơn">Danh sách hóa đơn</a></li>
 
                         </ul>
@@ -138,9 +151,12 @@
             </nav>
         </div>
     </div>
+
     <div id="div-main" class="main-container">
+
         <!-- Nội dung chính của trang -->
         @RenderBody()
+
     </div>
     <script>
         function toggleSidebar() {
@@ -149,6 +165,16 @@
                 sidebar.style.left = "0";
             } else {
                 sidebar.style.left = "-250px";
+            }
+        }
+    </script>
+    <script>
+        function closeSidebar() {
+            var sidebar = document.getElementById("div-left");
+            if (sidebar.style.left === "0px") {
+                sidebar.style.left = "-250px";
+            } else {
+                sidebar.style.left = "-0px";
             }
         }
     </script>

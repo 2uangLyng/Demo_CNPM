@@ -35,9 +35,12 @@
         <thead>
             <tr>
                 <th>Tên sản phẩm</th>
+                <th></th>
                 <th>Ảnh</th>
                 <th>Giá sản phẩm (VND)</th>
+                <th></th>
                 <th>Số lượng</th>
+                <th></th>
                 <th>Thành tiền</th>
                 <th></th>
             </tr>
@@ -48,17 +51,19 @@
                 decimal total = item._quantity * (decimal)item._product.Giá_bán;
                 <tr>
                     <td>@Html.DisplayFor(model => item._product.Tên)</td>
-                    <td><img src="~/Images/@item._product.Hinh_anh" height="50" width="50"/></td>
+                    <td></td>
+                    <td><img src="~/Images/@item._product.Hinh_anh" height="50" width="50" /></td>
                     <td>@Html.DisplayFor(model => item._product.Giá_bán)VND</td>
+                    <td></td>
                     <td>
                         @using (Html.BeginForm("Update_Cart_Quantity", "ShoppingCart"))
                         {
                             <input type="hidden" value="@item._product.ID" name="idPro" />
                             <input type="number" value="@item._quantity" name="CartQuantity" min="0" />
-                            <input type="submit" class="btn-tieptucmuahang style="font-size:10px" value="Cập Nhật" />
+                            <input type="submit" class="btn-tieptucmuahang" style="font-size:10px" value="Cập Nhật" />
                         }
                     </td>
-                  
+                    <td></td>
                     <td>@total VND</td>
                     <td>
                         <a href="~/ShoppingCart/RemoveCart/@item._product.ID" class="xoa" style="color:aliceblue"> Xoá</a>
@@ -88,7 +93,7 @@
             </style>
             @if (Model.Total_quantity() != 0)
             {
-                <tr>                
+                <tr>
                     <td colspan="3" style="text-align:right; font-size:x-large; color: crimson;">
                         Tổng tiền : @Model.Total_money().ToString("#,##0").Replace(',', '.')VND
                     </td>
@@ -103,9 +108,25 @@
                 </td>
                 <td colspan="3"></td>
             </tr>
-        </tfoot>
 
+            @using (Html.BeginForm("CheckOut", "ShoppingCart"))
+            {
+                @Html.AntiForgeryToken()
+
+                if (Model.Total_quantity() != 0)
+                {
+                    <input type="submit" value="Thanh toán" class="btn btn-danger" />
+                }
+                else
+                {
+                    <p style="color:red;font-size:large; text-align:center"><b>Chưa có Sản phẩm.....Vui lòng chọn sản phẩm !!!!!!</b></p>
+                }
+            }
+
+        </tfoot>
+        
     </table>
+    
 }
 else
 {

@@ -15,7 +15,7 @@ namespace Demo_CNPM.Controllers
 {
     public class Hàng_HóaController : Controller
     {
-        private taphoa_finalEntities3 db = new taphoa_finalEntities3();
+        private taphoa_finalEntities4 db = new taphoa_finalEntities4();
 
 
 

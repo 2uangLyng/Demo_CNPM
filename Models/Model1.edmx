@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="taphoa_finalModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="taphoa_finalModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Chi_tiết_hóa_đơn">
           <Key>
             <PropertyRef Name="ID_HH" />
@@ -22,7 +22,7 @@
           </Key>
           <Property Name="Id" Type="int" Nullable="false" />
           <Property Name="TenChucNang" Type="nvarchar" MaxLength="50" />
-          <Property Name="MaChucNang" Type="nvarchar" MaxLength="50" />
+          <Property Name="MaChucNang" Type="varchar" MaxLength="10" />
         </EntityType>
         <EntityType Name="ĐVT">
           <Key>
@@ -36,7 +36,7 @@
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="int" Nullable="false" />
-          <Property Name="Tên" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Tên" Type="nvarchar" MaxLength="20" Nullable="false" />
           <Property Name="Số_Lượng" Type="int" Nullable="false" />
           <Property Name="Giá_mua" Type="int" Nullable="false" />
           <Property Name="Giá_bán" Type="int" Nullable="false" />
@@ -60,18 +60,18 @@
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="varchar" MaxLength="10" Nullable="false" />
-          <Property Name="Tên" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="Tên" Type="nvarchar" MaxLength="10" Nullable="false" />
         </EntityType>
         <EntityType Name="Nhân_viên">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="varchar" MaxLength="10" Nullable="false" />
-          <Property Name="Tên" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Tên" Type="nvarchar" MaxLength="20" Nullable="false" />
           <Property Name="Giới_tính" Type="nvarchar" MaxLength="5" />
           <Property Name="Địa_chỉ" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="SDT" Type="int" Nullable="false" />
-          <Property Name="Password" Type="varchar" MaxLength="50" />
+          <Property Name="Password" Type="varchar" MaxLength="20" />
         </EntityType>
         <EntityType Name="PhanQuyen">
           <Key>
@@ -80,19 +80,9 @@
           </Key>
           <Property Name="IdNV" Type="varchar" MaxLength="10" Nullable="false" />
           <Property Name="IdChucNang" Type="int" Nullable="false" />
-          <Property Name="TenQuyen" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="TenQuyen" Type="nvarchar" MaxLength="50" />
         </EntityType>
-        <EntityType Name="sysdiagrams">
-          <Key>
-            <PropertyRef Name="diagram_id" />
-          </Key>
-          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
-          <Property Name="principal_id" Type="int" Nullable="false" />
-          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="version" Type="int" />
-          <Property Name="definition" Type="varbinary(max)" />
-        </EntityType>
-        <Association Name="FK__Chi_tiết___ID_HD__45F365D3">
+        <Association Name="FK__Chi_tiết___ID_HD__32E0915F">
           <End Role="Hóa_đơn" Type="Self.Hóa_đơn" Multiplicity="1" />
           <End Role="Chi_tiết_hóa_đơn" Type="Self.Chi_tiết_hóa_đơn" Multiplicity="*" />
           <ReferentialConstraint>
@@ -104,7 +94,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Chi_tiết___ID_HH__44FF419A">
+        <Association Name="FK__Chi_tiết___ID_HH__31EC6D26">
           <End Role="Hàng_Hóa" Type="Self.Hàng_Hóa" Multiplicity="1" />
           <End Role="Chi_tiết_hóa_đơn" Type="Self.Chi_tiết_hóa_đơn" Multiplicity="*" />
           <ReferentialConstraint>
@@ -116,7 +106,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Hàng_Hóa__ID_DVT__4222D4EF">
+        <Association Name="FK__Hàng_Hóa__ID_DVT__2F10007B">
           <End Role="ĐVT" Type="Self.ĐVT" Multiplicity="1" />
           <End Role="Hàng_Hóa" Type="Self.Hàng_Hóa" Multiplicity="*" />
           <ReferentialConstraint>
@@ -128,7 +118,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Hàng_Hóa__ID_loạ__412EB0B6">
+        <Association Name="FK__Hàng_Hóa__ID_loạ__2E1BDC42">
           <End Role="Loại" Type="Self.Loại" Multiplicity="1" />
           <End Role="Hàng_Hóa" Type="Self.Hàng_Hóa" Multiplicity="*" />
           <ReferentialConstraint>
@@ -140,7 +130,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Hóa_đơn__ID_NV__3E52440B">
+        <Association Name="FK__Hóa_đơn__ID_NV__2B3F6F97">
           <End Role="Nhân_viên" Type="Self.Nhân_viên" Multiplicity="1" />
           <End Role="Hóa_đơn" Type="Self.Hóa_đơn" Multiplicity="*" />
           <ReferentialConstraint>
@@ -152,7 +142,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_PhanQuyen_ChucNang">
+        <Association Name="FK__PhanQuyen__IdChu__38996AB5">
           <End Role="ChucNang" Type="Self.ChucNang" Multiplicity="1" />
           <End Role="PhanQuyen" Type="Self.PhanQuyen" Multiplicity="*" />
           <ReferentialConstraint>
@@ -164,7 +154,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_PhanQuyen_Nhân_viên">
+        <Association Name="FK__PhanQuyen__IdNV__37A5467C">
           <End Role="Nhân_viên" Type="Self.Nhân_viên" Multiplicity="1" />
           <End Role="PhanQuyen" Type="Self.PhanQuyen" Multiplicity="*" />
           <ReferentialConstraint>
@@ -185,37 +175,37 @@
           <EntitySet Name="Loại" EntityType="Self.Loại" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Nhân_viên" EntityType="Self.Nhân_viên" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PhanQuyen" EntityType="Self.PhanQuyen" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK__Chi_tiết___ID_HD__45F365D3" Association="Self.FK__Chi_tiết___ID_HD__45F365D3">
+          <AssociationSet Name="FK__Chi_tiết___ID_HD__32E0915F" Association="Self.FK__Chi_tiết___ID_HD__32E0915F">
             <End Role="Hóa_đơn" EntitySet="Hóa_đơn" />
             <End Role="Chi_tiết_hóa_đơn" EntitySet="Chi_tiết_hóa_đơn" />
           </AssociationSet>
-          <AssociationSet Name="FK__Chi_tiết___ID_HH__44FF419A" Association="Self.FK__Chi_tiết___ID_HH__44FF419A">
+          <AssociationSet Name="FK__Chi_tiết___ID_HH__31EC6D26" Association="Self.FK__Chi_tiết___ID_HH__31EC6D26">
             <End Role="Hàng_Hóa" EntitySet="Hàng_Hóa" />
             <End Role="Chi_tiết_hóa_đơn" EntitySet="Chi_tiết_hóa_đơn" />
           </AssociationSet>
-          <AssociationSet Name="FK__Hàng_Hóa__ID_DVT__4222D4EF" Association="Self.FK__Hàng_Hóa__ID_DVT__4222D4EF">
+          <AssociationSet Name="FK__Hàng_Hóa__ID_DVT__2F10007B" Association="Self.FK__Hàng_Hóa__ID_DVT__2F10007B">
             <End Role="ĐVT" EntitySet="ĐVT" />
             <End Role="Hàng_Hóa" EntitySet="Hàng_Hóa" />
           </AssociationSet>
-          <AssociationSet Name="FK__Hàng_Hóa__ID_loạ__412EB0B6" Association="Self.FK__Hàng_Hóa__ID_loạ__412EB0B6">
+          <AssociationSet Name="FK__Hàng_Hóa__ID_loạ__2E1BDC42" Association="Self.FK__Hàng_Hóa__ID_loạ__2E1BDC42">
             <End Role="Loại" EntitySet="Loại" />
             <End Role="Hàng_Hóa" EntitySet="Hàng_Hóa" />
           </AssociationSet>
-          <AssociationSet Name="FK__Hóa_đơn__ID_NV__3E52440B" Association="Self.FK__Hóa_đơn__ID_NV__3E52440B">
+          <AssociationSet Name="FK__Hóa_đơn__ID_NV__2B3F6F97" Association="Self.FK__Hóa_đơn__ID_NV__2B3F6F97">
             <End Role="Nhân_viên" EntitySet="Nhân_viên" />
             <End Role="Hóa_đơn" EntitySet="Hóa_đơn" />
           </AssociationSet>
-          <AssociationSet Name="FK_PhanQuyen_ChucNang" Association="Self.FK_PhanQuyen_ChucNang">
+          <AssociationSet Name="FK__PhanQuyen__IdChu__38996AB5" Association="Self.FK__PhanQuyen__IdChu__38996AB5">
             <End Role="ChucNang" EntitySet="ChucNang" />
             <End Role="PhanQuyen" EntitySet="PhanQuyen" />
           </AssociationSet>
-          <AssociationSet Name="FK_PhanQuyen_Nhân_viên" Association="Self.FK_PhanQuyen_Nhân_viên">
+          <AssociationSet Name="FK__PhanQuyen__IdNV__37A5467C" Association="Self.FK__PhanQuyen__IdNV__37A5467C">
             <End Role="Nhân_viên" EntitySet="Nhân_viên" />
             <End Role="PhanQuyen" EntitySet="PhanQuyen" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="taphoa_finalModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -229,8 +219,8 @@
           <Property Name="SL" Type="Int32" Nullable="false" />
           <Property Name="Đơn_giá" Type="Int32" Nullable="false" />
           <Property Name="Thành_tiền" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Hóa_đơn" Relationship="Self.FK__Chi_tiết___ID_HD__45F365D3" FromRole="Chi_tiết_hóa_đơn" ToRole="Hóa_đơn" />
-          <NavigationProperty Name="Hàng_Hóa" Relationship="Self.FK__Chi_tiết___ID_HH__44FF419A" FromRole="Chi_tiết_hóa_đơn" ToRole="Hàng_Hóa" />
+          <NavigationProperty Name="Hóa_đơn" Relationship="Self.FK__Chi_tiết___ID_HD__32E0915F" FromRole="Chi_tiết_hóa_đơn" ToRole="Hóa_đơn" />
+          <NavigationProperty Name="Hàng_Hóa" Relationship="Self.FK__Chi_tiết___ID_HH__31EC6D26" FromRole="Chi_tiết_hóa_đơn" ToRole="Hàng_Hóa" />
         </EntityType>
         <EntityType Name="ChucNang">
           <Key>
@@ -238,8 +228,8 @@
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" />
           <Property Name="TenChucNang" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="PhanQuyens" Relationship="Self.FK_PhanQuyen_ChucNang" FromRole="ChucNang" ToRole="PhanQuyen" />
-          <Property Name="MaChucNang" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MaChucNang" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="PhanQuyens" Relationship="Self.FK__PhanQuyen__IdChu__38996AB5" FromRole="ChucNang" ToRole="PhanQuyen" />
         </EntityType>
         <EntityType Name="ĐVT">
           <Key>
@@ -247,14 +237,14 @@
           </Key>
           <Property Name="ID" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Tên" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="Hàng_Hóa" Relationship="Self.FK__Hàng_Hóa__ID_DVT__4222D4EF" FromRole="ĐVT" ToRole="Hàng_Hóa" />
+          <NavigationProperty Name="Hàng_Hóa" Relationship="Self.FK__Hàng_Hóa__ID_DVT__2F10007B" FromRole="ĐVT" ToRole="Hàng_Hóa" />
         </EntityType>
         <EntityType Name="Hàng_Hóa">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" />
-          <Property Name="Tên" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Tên" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Số_Lượng" Type="Int32" Nullable="false" />
           <Property Name="Giá_mua" Type="Int32" Nullable="false" />
           <Property Name="Giá_bán" Type="Int32" Nullable="false" />
@@ -262,9 +252,9 @@
           <Property Name="ID_DVT" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="SL_ton" Type="Int32" />
           <Property Name="Hinh_anh" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Chi_tiết_hóa_đơn" Relationship="Self.FK__Chi_tiết___ID_HH__44FF419A" FromRole="Hàng_Hóa" ToRole="Chi_tiết_hóa_đơn" />
-          <NavigationProperty Name="ĐVT" Relationship="Self.FK__Hàng_Hóa__ID_DVT__4222D4EF" FromRole="Hàng_Hóa" ToRole="ĐVT" />
-          <NavigationProperty Name="Loại" Relationship="Self.FK__Hàng_Hóa__ID_loạ__412EB0B6" FromRole="Hàng_Hóa" ToRole="Loại" />
+          <NavigationProperty Name="Chi_tiết_hóa_đơn" Relationship="Self.FK__Chi_tiết___ID_HH__31EC6D26" FromRole="Hàng_Hóa" ToRole="Chi_tiết_hóa_đơn" />
+          <NavigationProperty Name="ĐVT" Relationship="Self.FK__Hàng_Hóa__ID_DVT__2F10007B" FromRole="Hàng_Hóa" ToRole="ĐVT" />
+          <NavigationProperty Name="Loại" Relationship="Self.FK__Hàng_Hóa__ID_loạ__2E1BDC42" FromRole="Hàng_Hóa" ToRole="Loại" />
         </EntityType>
         <EntityType Name="Hóa_đơn">
           <Key>
@@ -275,29 +265,29 @@
           <Property Name="Ngày_bán" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="Tổng_SL" Type="Int32" Nullable="false" />
           <Property Name="Tổng_tiền" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Chi_tiết_hóa_đơn" Relationship="Self.FK__Chi_tiết___ID_HD__45F365D3" FromRole="Hóa_đơn" ToRole="Chi_tiết_hóa_đơn" />
-          <NavigationProperty Name="Nhân_viên" Relationship="Self.FK__Hóa_đơn__ID_NV__3E52440B" FromRole="Hóa_đơn" ToRole="Nhân_viên" />
+          <NavigationProperty Name="Chi_tiết_hóa_đơn" Relationship="Self.FK__Chi_tiết___ID_HD__32E0915F" FromRole="Hóa_đơn" ToRole="Chi_tiết_hóa_đơn" />
+          <NavigationProperty Name="Nhân_viên" Relationship="Self.FK__Hóa_đơn__ID_NV__2B3F6F97" FromRole="Hóa_đơn" ToRole="Nhân_viên" />
         </EntityType>
         <EntityType Name="Loại">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Tên" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="Hàng_Hóa" Relationship="Self.FK__Hàng_Hóa__ID_loạ__412EB0B6" FromRole="Loại" ToRole="Hàng_Hóa" />
+          <Property Name="Tên" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Hàng_Hóa" Relationship="Self.FK__Hàng_Hóa__ID_loạ__2E1BDC42" FromRole="Loại" ToRole="Hàng_Hóa" />
         </EntityType>
         <EntityType Name="Nhân_viên">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Tên" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Tên" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Giới_tính" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
           <Property Name="Địa_chỉ" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="SDT" Type="Int32" Nullable="false" />
-          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Hóa_đơn" Relationship="Self.FK__Hóa_đơn__ID_NV__3E52440B" FromRole="Nhân_viên" ToRole="Hóa_đơn" />
-          <NavigationProperty Name="PhanQuyens" Relationship="Self.FK_PhanQuyen_Nhân_viên" FromRole="Nhân_viên" ToRole="PhanQuyen" />
+          <Property Name="Password" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Hóa_đơn" Relationship="Self.FK__Hóa_đơn__ID_NV__2B3F6F97" FromRole="Nhân_viên" ToRole="Hóa_đơn" />
+          <NavigationProperty Name="PhanQuyens" Relationship="Self.FK__PhanQuyen__IdNV__37A5467C" FromRole="Nhân_viên" ToRole="PhanQuyen" />
         </EntityType>
         <EntityType Name="PhanQuyen">
           <Key>
@@ -306,21 +296,11 @@
           </Key>
           <Property Name="IdNV" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="IdChucNang" Type="Int32" Nullable="false" />
-          <Property Name="TenQuyen" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="ChucNang" Relationship="Self.FK_PhanQuyen_ChucNang" FromRole="PhanQuyen" ToRole="ChucNang" />
-          <NavigationProperty Name="Nhân_viên" Relationship="Self.FK_PhanQuyen_Nhân_viên" FromRole="PhanQuyen" ToRole="Nhân_viên" />
+          <Property Name="TenQuyen" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="ChucNang" Relationship="Self.FK__PhanQuyen__IdChu__38996AB5" FromRole="PhanQuyen" ToRole="ChucNang" />
+          <NavigationProperty Name="Nhân_viên" Relationship="Self.FK__PhanQuyen__IdNV__37A5467C" FromRole="PhanQuyen" ToRole="Nhân_viên" />
         </EntityType>
-        <EntityType Name="sysdiagram">
-          <Key>
-            <PropertyRef Name="diagram_id" />
-          </Key>
-          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="principal_id" Type="Int32" Nullable="false" />
-          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="version" Type="Int32" />
-          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
-        </EntityType>
-        <Association Name="FK__Chi_tiết___ID_HD__45F365D3">
+        <Association Name="FK__Chi_tiết___ID_HD__32E0915F">
           <End Role="Hóa_đơn" Type="Self.Hóa_đơn" Multiplicity="1" />
           <End Role="Chi_tiết_hóa_đơn" Type="Self.Chi_tiết_hóa_đơn" Multiplicity="*" />
           <ReferentialConstraint>
@@ -332,7 +312,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Chi_tiết___ID_HH__44FF419A">
+        <Association Name="FK__Chi_tiết___ID_HH__31EC6D26">
           <End Role="Hàng_Hóa" Type="Self.Hàng_Hóa" Multiplicity="1" />
           <End Role="Chi_tiết_hóa_đơn" Type="Self.Chi_tiết_hóa_đơn" Multiplicity="*" />
           <ReferentialConstraint>
@@ -344,7 +324,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_PhanQuyen_ChucNang">
+        <Association Name="FK__PhanQuyen__IdChu__38996AB5">
           <End Role="ChucNang" Type="Self.ChucNang" Multiplicity="1" />
           <End Role="PhanQuyen" Type="Self.PhanQuyen" Multiplicity="*" />
           <ReferentialConstraint>
@@ -356,7 +336,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Hàng_Hóa__ID_DVT__4222D4EF">
+        <Association Name="FK__Hàng_Hóa__ID_DVT__2F10007B">
           <End Role="ĐVT" Type="Self.ĐVT" Multiplicity="1" />
           <End Role="Hàng_Hóa" Type="Self.Hàng_Hóa" Multiplicity="*" />
           <ReferentialConstraint>
@@ -368,7 +348,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Hàng_Hóa__ID_loạ__412EB0B6">
+        <Association Name="FK__Hàng_Hóa__ID_loạ__2E1BDC42">
           <End Role="Loại" Type="Self.Loại" Multiplicity="1" />
           <End Role="Hàng_Hóa" Type="Self.Hàng_Hóa" Multiplicity="*" />
           <ReferentialConstraint>
@@ -380,7 +360,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Hóa_đơn__ID_NV__3E52440B">
+        <Association Name="FK__Hóa_đơn__ID_NV__2B3F6F97">
           <End Role="Nhân_viên" Type="Self.Nhân_viên" Multiplicity="1" />
           <End Role="Hóa_đơn" Type="Self.Hóa_đơn" Multiplicity="*" />
           <ReferentialConstraint>
@@ -392,7 +372,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_PhanQuyen_Nhân_viên">
+        <Association Name="FK__PhanQuyen__IdNV__37A5467C">
           <End Role="Nhân_viên" Type="Self.Nhân_viên" Multiplicity="1" />
           <End Role="PhanQuyen" Type="Self.PhanQuyen" Multiplicity="*" />
           <ReferentialConstraint>
@@ -404,7 +384,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="taphoa_finalEntities3" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="taphoa_finalEntities4" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Chi_tiết_hóa_đơn" EntityType="Self.Chi_tiết_hóa_đơn" />
           <EntitySet Name="ChucNangs" EntityType="Self.ChucNang" />
           <EntitySet Name="ĐVT" EntityType="Self.ĐVT" />
@@ -413,32 +393,31 @@
           <EntitySet Name="Loại" EntityType="Self.Loại" />
           <EntitySet Name="Nhân_viên" EntityType="Self.Nhân_viên" />
           <EntitySet Name="PhanQuyens" EntityType="Self.PhanQuyen" />
-          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
-          <AssociationSet Name="FK__Chi_tiết___ID_HD__45F365D3" Association="Self.FK__Chi_tiết___ID_HD__45F365D3">
+          <AssociationSet Name="FK__Chi_tiết___ID_HD__32E0915F" Association="Self.FK__Chi_tiết___ID_HD__32E0915F">
             <End Role="Hóa_đơn" EntitySet="Hóa_đơn" />
             <End Role="Chi_tiết_hóa_đơn" EntitySet="Chi_tiết_hóa_đơn" />
           </AssociationSet>
-          <AssociationSet Name="FK__Chi_tiết___ID_HH__44FF419A" Association="Self.FK__Chi_tiết___ID_HH__44FF419A">
+          <AssociationSet Name="FK__Chi_tiết___ID_HH__31EC6D26" Association="Self.FK__Chi_tiết___ID_HH__31EC6D26">
             <End Role="Hàng_Hóa" EntitySet="Hàng_Hóa" />
             <End Role="Chi_tiết_hóa_đơn" EntitySet="Chi_tiết_hóa_đơn" />
           </AssociationSet>
-          <AssociationSet Name="FK_PhanQuyen_ChucNang" Association="Self.FK_PhanQuyen_ChucNang">
+          <AssociationSet Name="FK__PhanQuyen__IdChu__38996AB5" Association="Self.FK__PhanQuyen__IdChu__38996AB5">
             <End Role="ChucNang" EntitySet="ChucNangs" />
             <End Role="PhanQuyen" EntitySet="PhanQuyens" />
           </AssociationSet>
-          <AssociationSet Name="FK__Hàng_Hóa__ID_DVT__4222D4EF" Association="Self.FK__Hàng_Hóa__ID_DVT__4222D4EF">
+          <AssociationSet Name="FK__Hàng_Hóa__ID_DVT__2F10007B" Association="Self.FK__Hàng_Hóa__ID_DVT__2F10007B">
             <End Role="ĐVT" EntitySet="ĐVT" />
             <End Role="Hàng_Hóa" EntitySet="Hàng_Hóa" />
           </AssociationSet>
-          <AssociationSet Name="FK__Hàng_Hóa__ID_loạ__412EB0B6" Association="Self.FK__Hàng_Hóa__ID_loạ__412EB0B6">
+          <AssociationSet Name="FK__Hàng_Hóa__ID_loạ__2E1BDC42" Association="Self.FK__Hàng_Hóa__ID_loạ__2E1BDC42">
             <End Role="Loại" EntitySet="Loại" />
             <End Role="Hàng_Hóa" EntitySet="Hàng_Hóa" />
           </AssociationSet>
-          <AssociationSet Name="FK__Hóa_đơn__ID_NV__3E52440B" Association="Self.FK__Hóa_đơn__ID_NV__3E52440B">
+          <AssociationSet Name="FK__Hóa_đơn__ID_NV__2B3F6F97" Association="Self.FK__Hóa_đơn__ID_NV__2B3F6F97">
             <End Role="Nhân_viên" EntitySet="Nhân_viên" />
             <End Role="Hóa_đơn" EntitySet="Hóa_đơn" />
           </AssociationSet>
-          <AssociationSet Name="FK_PhanQuyen_Nhân_viên" Association="Self.FK_PhanQuyen_Nhân_viên">
+          <AssociationSet Name="FK__PhanQuyen__IdNV__37A5467C" Association="Self.FK__PhanQuyen__IdNV__37A5467C">
             <End Role="Nhân_viên" EntitySet="Nhân_viên" />
             <End Role="PhanQuyen" EntitySet="PhanQuyens" />
           </AssociationSet>
@@ -448,7 +427,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="taphoa_finalModelStoreContainer" CdmEntityContainer="taphoa_finalEntities3">
+        <EntityContainerMapping StorageEntityContainer="taphoa_finalModelStoreContainer" CdmEntityContainer="taphoa_finalEntities4">
           <EntitySetMapping Name="Chi_tiết_hóa_đơn">
             <EntityTypeMapping TypeName="taphoa_finalModel.Chi_tiết_hóa_đơn">
               <MappingFragment StoreEntitySet="Chi_tiết_hóa_đơn">
@@ -463,9 +442,9 @@
           <EntitySetMapping Name="ChucNangs">
             <EntityTypeMapping TypeName="taphoa_finalModel.ChucNang">
               <MappingFragment StoreEntitySet="ChucNang">
-                <ScalarProperty Name="MaChucNang" ColumnName="MaChucNang" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="TenChucNang" ColumnName="TenChucNang" />
+                <ScalarProperty Name="MaChucNang" ColumnName="MaChucNang" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -529,17 +508,6 @@
                 <ScalarProperty Name="IdNV" ColumnName="IdNV" />
                 <ScalarProperty Name="IdChucNang" ColumnName="IdChucNang" />
                 <ScalarProperty Name="TenQuyen" ColumnName="TenQuyen" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="sysdiagrams">
-            <EntityTypeMapping TypeName="taphoa_finalModel.sysdiagram">
-              <MappingFragment StoreEntitySet="sysdiagrams">
-                <ScalarProperty Name="name" ColumnName="name" />
-                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
-                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
-                <ScalarProperty Name="version" ColumnName="version" />
-                <ScalarProperty Name="definition" ColumnName="definition" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

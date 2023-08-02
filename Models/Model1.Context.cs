@@ -13,10 +13,10 @@ namespace Demo_CNPM.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class taphoa_finalEntities3 : DbContext
+    public partial class taphoa_finalEntities4 : DbContext
     {
-        public taphoa_finalEntities3()
-            : base("name=taphoa_finalEntities3")
+        public taphoa_finalEntities4()
+            : base("name=taphoa_finalEntities4")
         {
         }
     
@@ -33,6 +33,5 @@ namespace Demo_CNPM.Models
         public virtual DbSet<Loại> Loại { get; set; }
         public virtual DbSet<Nhân_viên> Nhân_viên { get; set; }
         public virtual DbSet<PhanQuyen> PhanQuyens { get; set; }
-        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
     }
 }
