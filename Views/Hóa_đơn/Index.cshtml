@@ -5,11 +5,7 @@
     Layout = "~/Views/Shared/_MasterLayout.cshtml";
 }
 
-<h2>Index</h2>
-
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
+<a href="@Url.Action("Create")" class="btn btn-primary" style="height:60px">Create New</a>
 <table class="table">
     <tr>
         <th>
@@ -42,9 +38,9 @@
             @Html.DisplayFor(modelItem => item.Nhân_viên.Tên)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
+            <a href="@Url.Action("Edit", new { id=item.ID })" class="btn btn-warning">Edit</a>
+            <a href="@Url.Action("Details", new { id=item.ID })" class="btn btn-info">Details</a>
+            <a href="@Url.Action("Delete", new { id=item.ID })" class="btn btn-danger">Delete</a>
         </td>
     </tr>
 }

@@ -8,14 +8,55 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using Demo_CNPM.Models;
+using System.Web.Security;
+using Demo_CNPM.App_Start;
 
 namespace Demo_CNPM.Controllers
 {
     public class Hàng_HóaController : Controller
     {
-        private taphoa_finalEntities3 db = new taphoa_finalEntities3();
+        private taphoa_finalEntities4 db = new taphoa_finalEntities4();
+
+
+
+        public ActionResult DangNhap()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult DangNhap(string user, string password)
+        {
+            //check DB
+            var nhanVien = db.Nhân_viên.SingleOrDefault(m => m.ID == user && m.Password == password);
+
+            if (nhanVien != null)
+            {
+                Session["user"] = nhanVien;
+                ViewBag.user = nhanVien;
+                TempData["error"] = new Nhân_viên();
+
+                return RedirectToAction("Proview");
+            }
+
+            else
+            {
+                TempData["error"] = "Tài khoản đăng nhập không đúng";
+                return View();
+            }
+
+        }
+        //public ActionResult DangXuat()
+        //{
+        //    Session.Remove("user");
+        //    FormsAuthentication.SignOut();
+        //    return RedirectToAction("DangNhap");
+        //}
+
+
 
         // GET: Hàng_Hóa
+        [AdminAuthorize(idChucNang = 2)]
         public ActionResult Index()
         {
             var hàng_Hóa = db.Hàng_Hóa.Include(h => h.ĐVT).Include(h => h.Loại);
@@ -23,6 +64,7 @@ namespace Demo_CNPM.Controllers
         }
 
         // GET: Hàng_Hóa/Details/5
+        [AdminAuthorize(idChucNang = 2)]
         public ActionResult Details(string id)
         {
             if (id == null)
@@ -38,6 +80,7 @@ namespace Demo_CNPM.Controllers
         }
 
         // GET: Hàng_Hóa/Create
+        [AdminAuthorize(idChucNang = 2)]
         public ActionResult Create()
         {
             ViewBag.ID_DVT = new SelectList(db.ĐVT, "ID", "Tên");
@@ -50,6 +93,7 @@ namespace Demo_CNPM.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [AdminAuthorize(idChucNang = 2)]
         public ActionResult Create([Bind(Include = "ID,Tên,Số_Lượng,Giá_mua,Giá_bán,ID_loại,ID_DVT,SL_ton,Hinh_anh")] Hàng_Hóa hàng_Hóa, HttpPostedFileBase Hinh_anh)
         {
             if (ModelState.IsValid)
@@ -76,6 +120,7 @@ namespace Demo_CNPM.Controllers
         }
 
         // GET: Hàng_Hóa/Edit/5
+        [AdminAuthorize(idChucNang = 2)]
         public ActionResult Edit(string id)
         {
             if (id == null)
@@ -97,6 +142,7 @@ namespace Demo_CNPM.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [AdminAuthorize(idChucNang = 2)]
         public ActionResult Edit([Bind(Include = "ID,Tên,Số_Lượng,Giá_mua,Giá_bán,ID_loại,ID_DVT,SL_ton,Hinh_anh")] Hàng_Hóa hàng_Hóa)
         {
             if (ModelState.IsValid)
@@ -111,6 +157,7 @@ namespace Demo_CNPM.Controllers
         }
 
         // GET: Hàng_Hóa/Delete/5
+        [AdminAuthorize(idChucNang = 2)]
         public ActionResult Delete(string id)
         {
             if (id == null)
@@ -135,6 +182,7 @@ namespace Demo_CNPM.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
+
         public ActionResult Quanlyban(string SearchString)
         {
             var Hàng_Hóa = db.Hàng_Hóa.Include(p => p.Loại);
@@ -146,12 +194,12 @@ namespace Demo_CNPM.Controllers
         }
         public ActionResult Proview(string SearchString)
         {
-            var Hàng_Hóa = db.Hàng_Hóa.Include(p => p.Loại);
-            if (!String.IsNullOrEmpty(SearchString))
-            {
-                Hàng_Hóa = Hàng_Hóa.Where(s => s.Tên.Contains(SearchString));
-            }
-            return View(Hàng_Hóa.ToList());
+                var Hàng_Hóa = db.Hàng_Hóa.Include(p => p.Loại);
+                if (!String.IsNullOrEmpty(SearchString))
+                {
+                    Hàng_Hóa = Hàng_Hóa.Where(s => s.Tên.Contains(SearchString));
+                }
+                return View(Hàng_Hóa.ToList());
         }
         protected override void Dispose(bool disposing)
         {

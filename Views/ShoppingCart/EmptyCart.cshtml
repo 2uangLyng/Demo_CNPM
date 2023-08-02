@@ -1,24 +1,47 @@
 ﻿@{
     Layout = "~/Views/Shared/NormaLayout.cshtml";
 }
+
+<head>
+    <style>
+        /* CSS cho nút "Tiếp tục mua hàng" */
+        .btn-tieptucmuahang {
+            display: inline-block;
+            padding: 10px 20px;
+            font-size: 16px;
+            text-align: center;
+            text-decoration: none;
+            background-color: #1E90FF;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+            /* Hiệu ứng hover cho nút "Tiếp tục mua hàng" */
+            .btn-tieptucmuahang:hover {
+                background-color: #007BFF;
+            }
+    </style>
+</head>
 <h2 style="text-align:center"> Giỏ hàng </h2>
-<a href="" style="font-size:20px">Tiếp tục mua hàng</a>
+<a href="" style="font-size:15px; margin-bottom:10px" class="btn-tieptucmuahang">Tiếp tục mua hàng</a>
 <table class="table">
     <thead>
         <tr>
-            <th>tên sản phẩm</th>
-            <th>hình sản phẩm</th>
-            <th>giá</th>
-            <th>số lượng</th>
-            <th>thành tiền</th>
+            <th>Tên sản phẩm</th>
+            <th>Hình sản phẩm</th>
+            <th>Giá</th>
+            <th>Số lượng</th>
+            <th>Thành tiền</th>
             <th></th>
         </tr>
         <a href="~/Views/_ViewStart.cshtml"></a>
     </thead>
     <tbody>
         <tr>
-            <td colspan="6" style="color:red;font-size:15px">
-                chưa có sản phẩm nào................
+            <td colspan="6" style="color:red;font-size:10px">
+                Chưa có sản phẩm nào
             </td>
         </tr>
     </tbody>

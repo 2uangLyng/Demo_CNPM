@@ -3,19 +3,128 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
+    <meta charset="utf-8"/>
     <title>@ViewBag.Title</title>
     <link href="~/Content/mystyle.css" rel="stylesheet" />
     <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <script src="https://kit.fontawesome.com/7adcc5bf9d.js" crossorigin="anonymous"></script>
+
+    <style>
+        body {
+            background-color: #f8f8f8; /* Màu nền background */
+            font-family: Arial, sans-serif; /* Đặt font chữ chung cho toàn bộ trang */
+            line-height: 1.6; /* Đặt độ cao dòng dựa trên kích thước chữ */
+            color: #333; /* Màu chữ chung cho toàn bộ trang */
+        }
+
+        /* CSS cho sidebar bên trái */
+        .main-container {
+            max-width: 100%; /* Đặt chiều rộng tối đa cho container */
+            margin: 0 auto; /* Đặt lề tự động để căn giữa container */
+            padding: 20px; /* Đặt padding để tạo khoảng cách giữa nội dung và viền container */
+        }
+
+        .hamburger-btn {
+            display: block;
+            cursor: pointer;
+        }
+
+            /* Hiệu ứng hover cho nút "hamburger button" */
+            .hamburger-btn:hover {
+                cursor: pointer; /* Chỉ định kiểu con trỏ bàn tay */
+            }
+
+        #div-left {
+            background-color: #f0f0f0; /* Màu nền của sidebar */
+            padding: 10px;
+            width: 250px; /* Đặt chiều rộng cố định cho sidebar */
+            position: fixed; /* Dùng "position: fixed" để giữ sidebar ở một vị trí cố định trên trang */
+            top: 0;
+            bottom: 0;
+            left: -250px; /* Đặt giá trị âm để ẩn sidebar khi ban đầu tải trang */
+            z-index: 999; /* Đặt z-index để đảm bảo sidebar hiển thị trên các phần khác trên trang */
+            transition: left 0.3s ease; /* Thêm hiệu ứng chuyển đổi mềm mượt */
+        }
+
+        #btn-close{
+            font-size: 30px;
+            margin-left: 150px;
+
+        }
+
+            #btn-close:hover {
+]                color: blue; /* Màu chữ thay đổi khi hover */
+            }
+
+        #btn-bger {
+            position: absolute; /* Dùng "position: fixed" để giữ div-top ở vị trí cố định trên trang */
+            cursor:pointer;
+            font-size: 30px;
+            margin-left: 30px;
+        }
+        #btn-bger:hover{
+                        color: blue; /* Màu chữ thay đổi khi hover */
+        }
+
+        #menu {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+            #menu li {
+                margin-bottom: 10px;
+            }
+
+                #menu li a {
+                    color: #333; /* Màu chữ của mục menu */
+                    text-decoration: none;
+                    display: block;
+                    padding: 8px;
+                    border-radius: 5px;
+                    transition: background-color 0.2s; /* Thêm hiệu ứng chuyển đổi màu khi hover */
+                }
+
+                    /* Hiệu ứng hover */
+                    #menu li a:hover {
+                        background-color: #007BFF; /* Màu nền thay đổi khi hover */
+                        color: #fff; /* Màu chữ thay đổi khi hover */
+                    }
+
+       
+
+        /* ... */
+    </style>
+
 </head>
 <body>
+
+
     <div id="div-top">
+
         <img src="~/Images/logo.jpg" height="300px" width="100%" />
     </div>
+
     <hr width=100%" color="red" size="5px">
+
+    
+    <div style="display: flex">
+        <div><i id="btn-bger"  class="fa-solid fa-bars" onclick="toggleSidebar()"></i></div>
+        <div style="flex : 1"></div>
+        <div id="div-right" style="display:flex">
+            @{
+                var user = (Demo_CNPM.Models.Nhân_viên)HttpContext.Current.Session["user"];
+                <span>@user.Tên</span>
+            }
+        </div>
+    </div>
+
     <div id="div-main">
         <div id="div-left">
             <nav id="menu">
+
                 <ul class="main-menu">
+                    <i id="btn-close" class="fa fa-window-close-o" onclick="closeSidebar()" ></i>
                     <li>
                         <a href="#">Quản lí sản phẩm</a>
                         <ul>
@@ -27,8 +136,7 @@
                     <li>
                         <a href="#">Quản lí bán hàng</a>
                         <ul>
-                            <li><a href="https://localhost:44308/H%C3%A0ng_H%C3%B3a/Quanlyban">Bán Hàng</a></li>
-                            <li> <a href="https://localhost:44308/Hàng_Hóa/Create">Tạo hóa đơn</a></li>                          
+                            <li><a href="https://localhost:44308/H%C3%A0ng_H%C3%B3a/Proview#">Bán Hàng</a></li>
                             <li><a href="~/Hóa_đơn">Danh sách hóa đơn</a></li>
 
                         </ul>
@@ -42,9 +150,33 @@
                 </ul>
             </nav>
         </div>
-        <div id="div-containt">
-            @RenderBody()
-        </div>
     </div>
+
+    <div id="div-main" class="main-container">
+
+        <!-- Nội dung chính của trang -->
+        @RenderBody()
+
+    </div>
+    <script>
+        function toggleSidebar() {
+            var sidebar = document.getElementById("div-left");
+            if (sidebar.style.left === "-250px") {
+                sidebar.style.left = "0";
+            } else {
+                sidebar.style.left = "-250px";
+            }
+        }
+    </script>
+    <script>
+        function closeSidebar() {
+            var sidebar = document.getElementById("div-left");
+            if (sidebar.style.left === "0px") {
+                sidebar.style.left = "-250px";
+            } else {
+                sidebar.style.left = "-0px";
+            }
+        }
+    </script>
 </body>
 </html>

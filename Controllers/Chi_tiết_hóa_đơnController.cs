@@ -6,15 +6,17 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using Demo_CNPM.App_Start;
 using Demo_CNPM.Models;
 
 namespace Demo_CNPM.Controllers
 {
     public class Chi_tiết_hóa_đơnController : Controller
     {
-        private taphoa_finalEntities3 db = new taphoa_finalEntities3();
+        private taphoa_finalEntities4 db = new taphoa_finalEntities4();
 
         // GET: Chi_tiết_hóa_đơn
+        [AdminAuthorize(idChucNang = 1)]
         public ActionResult Index()
         {
             var chi_tiết_hóa_đơn = db.Chi_tiết_hóa_đơn.Include(c => c.Hóa_đơn).Include(c => c.Hàng_Hóa);
@@ -22,6 +24,7 @@ namespace Demo_CNPM.Controllers
         }
 
         // GET: Chi_tiết_hóa_đơn/Details/5
+        [AdminAuthorize(idChucNang = 1)]
         public ActionResult Details(string id)
         {
             if (id == null)
@@ -37,6 +40,7 @@ namespace Demo_CNPM.Controllers
         }
 
         // GET: Chi_tiết_hóa_đơn/Create
+        [AdminAuthorize(idChucNang = 1)]
         public ActionResult Create()
         {
             ViewBag.ID_HD = new SelectList(db.Hóa_đơn, "ID", "ID_NV");
@@ -49,6 +53,7 @@ namespace Demo_CNPM.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [AdminAuthorize(idChucNang = 1)]
         public ActionResult Create([Bind(Include = "ID_HH,ID_HD,SL,Đơn_giá,Thành_tiền")] Chi_tiết_hóa_đơn chi_tiết_hóa_đơn)
         {
             if (ModelState.IsValid)
@@ -64,6 +69,7 @@ namespace Demo_CNPM.Controllers
         }
 
         // GET: Chi_tiết_hóa_đơn/Edit/5
+        [AdminAuthorize(idChucNang = 1)]
         public ActionResult Edit(string id)
         {
             if (id == null)
@@ -85,6 +91,7 @@ namespace Demo_CNPM.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [AdminAuthorize(idChucNang = 1)]
         public ActionResult Edit([Bind(Include = "ID_HH,ID_HD,SL,Đơn_giá,Thành_tiền")] Chi_tiết_hóa_đơn chi_tiết_hóa_đơn)
         {
             if (ModelState.IsValid)
@@ -99,6 +106,7 @@ namespace Demo_CNPM.Controllers
         }
 
         // GET: Chi_tiết_hóa_đơn/Delete/5
+        [AdminAuthorize(idChucNang = 1)]
         public ActionResult Delete(string id)
         {
             if (id == null)
@@ -116,6 +124,7 @@ namespace Demo_CNPM.Controllers
         // POST: Chi_tiết_hóa_đơn/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [AdminAuthorize(idChucNang = 1)]
         public ActionResult DeleteConfirmed(string id)
         {
             Chi_tiết_hóa_đơn chi_tiết_hóa_đơn = db.Chi_tiết_hóa_đơn.Find(id);

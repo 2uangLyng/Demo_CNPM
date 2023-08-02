@@ -22,6 +22,7 @@ namespace Demo_CNPM.Models
     
         public int Id { get; set; }
         public string TenChucNang { get; set; }
+        public string MaChucNang { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PhanQuyen> PhanQuyens { get; set; }
