@@ -13,7 +13,7 @@ namespace Demo_CNPM.Controllers
 {
     public class Hóa_đơnController : Controller
     {
-        private taphoa_finalEntities4 db = new taphoa_finalEntities4();
+        private taphoa_final_demoEntities4 db = new taphoa_final_demoEntities4();
 
         // GET: Hóa_đơn
         [AdminAuthorize(idChucNang = 1)]

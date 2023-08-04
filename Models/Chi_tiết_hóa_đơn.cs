@@ -14,11 +14,12 @@ namespace Demo_CNPM.Models
     
     public partial class Chi_tiết_hóa_đơn
     {
-        public int ID_HH { get; set; }
-        public int ID_HD { get; set; }
-        public int SL { get; set; }
-        public int Đơn_giá { get; set; }
-        public int Thành_tiền { get; set; }
+        public int ID { get; set; }
+        public Nullable<int> ID_HH { get; set; }
+        public Nullable<int> ID_HD { get; set; }
+        public Nullable<int> SL { get; set; }
+        public Nullable<int> Đơn_giá { get; set; }
+        public Nullable<int> Thành_tiền { get; set; }
     
         public virtual Hóa_đơn Hóa_đơn { get; set; }
         public virtual Hàng_Hóa Hàng_Hóa { get; set; }

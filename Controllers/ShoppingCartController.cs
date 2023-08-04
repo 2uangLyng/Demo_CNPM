@@ -10,7 +10,7 @@ namespace Demo_CNPM.Controllers
 {
     public class ShoppingCartController : Controller
     {
-        private taphoa_finalEntities4 db = new taphoa_finalEntities4();
+        private taphoa_final_demoEntities4 db = new taphoa_final_demoEntities4();
         public ActionResult Showcart()
         {
             if (Session["Cart"] == null)
@@ -69,34 +69,44 @@ namespace Demo_CNPM.Controllers
 
         public ActionResult CheckOut(FormCollection from)
         {
-            try
-            {
-                Cart cart = Session["Cart"] as Cart;
-                Hóa_đơn _order = new Hóa_đơn();
-                _order.Ngày_bán = DateTime.Now;                     
-                foreach (var item in cart.Items)
-                {
-                    Chi_tiết_hóa_đơn _oder_detail = new Chi_tiết_hóa_đơn();
-                    _oder_detail.ID_HD= _order.ID;
-                    _oder_detail.ID_HH = item._product.ID;
-                    _oder_detail.SL = item._quantity;
-                    db.Chi_tiết_hóa_đơn.Add(_oder_detail);
-                    foreach (var p in db.Hàng_Hóa.Where(s => s.ID == _oder_detail.ID_HD))
-                    {
-                        var update_quan_pro = p.SL_ton - item._quantity;
-                        p.SL_ton = update_quan_pro;
-                    }
-                }
-                db.SaveChanges();
-                cart.ClearCart();
-                return RedirectToAction("CheckOut_Success", "ShoppingCart");
-            }
-            catch
-            {
-                return Content(" Error checkout, Plesase check infomation of customer...thanks  ");
 
+            Cart cart = Session["Cart"] as Cart;
+            var user = (Demo_CNPM.Models.Nhân_viên)HttpContext.Session["user"];
+            var user2 = user.ID;
+
+            // Tạo hóa đơn mới (_order) và lưu vào cơ sở dữ liệu
+            Hóa_đơn _order = new Hóa_đơn();
+            _order.Ngày_bán = DateTime.Now;
+            _order.ID_NV = user2;
+                db.Hóa_đơn.Add(_order);
+
+            foreach (var item in cart.Items)
+            {
+                Chi_tiết_hóa_đơn _oder_detail = new Chi_tiết_hóa_đơn();
+
+                // Gán ID_HD cho _oder_detail sau khi _order đã có ID mới
+                _oder_detail.ID_HD = _order.ID;
+                _oder_detail.ID_HH = item._product.ID;
+                _oder_detail.SL = item._quantity;
+                _oder_detail.Đơn_giá = item._product.Giá_bán;
+                _oder_detail.Thành_tiền = item._quantity * item._product.Giá_bán;
+                db.Chi_tiết_hóa_đơn.Add(_oder_detail);
+
+                foreach (var p in db.Hàng_Hóa.Where(s => s.ID == _oder_detail.ID_HH))
+                {
+                    // Lưu trữ thông tin Hàng Hóa (_product)
+                    var update_quan_pro = p.SL_ton - item._quantity;
+                    p.SL_ton = update_quan_pro;
+                }
             }
+            db.SaveChanges();
+            cart.ClearCart();
+            return Json(new { success = true });
+
+
         }
+
     }
 }
+
     

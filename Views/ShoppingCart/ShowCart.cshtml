@@ -115,7 +115,7 @@
 
                 if (Model.Total_quantity() != 0)
                 {
-                    <input type="submit" value="Thanh toán" class="btn btn-danger" />
+                    <input id="btn-pay" type="submit" value="Thanh toán" class="btn btn-danger" />
                 }
                 else
                 {
@@ -124,12 +124,16 @@
             }
 
         </tfoot>
-        
+
     </table>
-    
+    <span id="paymentSuccessMessage"></span>
+
+    <script src="path/to/payment_script.js"></script>
 }
 else
 {
     @*@Html.Partial("EmptyCart")*@
 }
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="thongbao.js"></script>
 

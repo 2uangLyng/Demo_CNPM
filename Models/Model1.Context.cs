@@ -13,10 +13,10 @@ namespace Demo_CNPM.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class taphoa_finalEntities4 : DbContext
+    public partial class taphoa_final_demoEntities4 : DbContext
     {
-        public taphoa_finalEntities4()
-            : base("name=taphoa_finalEntities4")
+        public taphoa_final_demoEntities4()
+            : base("name=taphoa_final_demoEntities4")
         {
         }
     

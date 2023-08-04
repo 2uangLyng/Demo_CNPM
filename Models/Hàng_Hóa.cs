@@ -22,7 +22,6 @@ namespace Demo_CNPM.Models
     
         public int ID { get; set; }
         public string Tên { get; set; }
-        public int Số_Lượng { get; set; }
         public int Giá_mua { get; set; }
         public int Giá_bán { get; set; }
         public string ID_loại { get; set; }

@@ -23,8 +23,8 @@ namespace Demo_CNPM.Models
         public int ID { get; set; }
         public string ID_NV { get; set; }
         public System.DateTime Ngày_bán { get; set; }
-        public int Tổng_SL { get; set; }
-        public int Tổng_tiền { get; set; }
+        public Nullable<int> Tổng_SL { get; set; }
+        public Nullable<int> Tổng_tiền { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Chi_tiết_hóa_đơn> Chi_tiết_hóa_đơn { get; set; }

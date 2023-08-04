@@ -4,22 +4,22 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="743edca106334e89adcd2aaa0783bcc5" Name="Diagram1">
-        <EntityTypeShape EntityType="taphoa_finalModel.Chi_tiết_hóa_đơn" Width="1.5" PointX="5.25" PointY="1.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="taphoa_finalModel.ChucNang" Width="1.5" PointX="0.75" PointY="11.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="taphoa_finalModel.ĐVT" Width="1.5" PointX="0.75" PointY="1.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="taphoa_finalModel.Hàng_Hóa" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
-        <EntityTypeShape EntityType="taphoa_finalModel.Hóa_đơn" Width="1.5" PointX="3" PointY="8.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="taphoa_finalModel.Loại" Width="1.5" PointX="0.75" PointY="5.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="taphoa_finalModel.Nhân_viên" Width="1.5" PointX="0.75" PointY="8.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="taphoa_finalModel.PhanQuyen" Width="1.5" PointX="3" PointY="5.625" IsExpanded="true" />
-        <AssociationConnector Association="taphoa_finalModel.FK__Chi_tiết___ID_HD__32E0915F" ManuallyRouted="false" />
-        <AssociationConnector Association="taphoa_finalModel.FK__Chi_tiết___ID_HH__31EC6D26" ManuallyRouted="false" />
-        <AssociationConnector Association="taphoa_finalModel.FK__PhanQuyen__IdChu__38996AB5" ManuallyRouted="false" />
-        <AssociationConnector Association="taphoa_finalModel.FK__Hàng_Hóa__ID_DVT__2F10007B" ManuallyRouted="false" />
-        <AssociationConnector Association="taphoa_finalModel.FK__Hàng_Hóa__ID_loạ__2E1BDC42" ManuallyRouted="false" />
-        <AssociationConnector Association="taphoa_finalModel.FK__Hóa_đơn__ID_NV__2B3F6F97" ManuallyRouted="false" />
-        <AssociationConnector Association="taphoa_finalModel.FK__PhanQuyen__IdNV__37A5467C" ManuallyRouted="false" />
+      <Diagram DiagramId="23d65541caea4179881dfec5a3c3291a" Name="Diagram1">
+        <EntityTypeShape EntityType="taphoa_final_demoModel.Chi_tiết_hóa_đơn" Width="1.5" PointX="5.25" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="taphoa_final_demoModel.ChucNang" Width="1.5" PointX="0.75" PointY="11.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="taphoa_final_demoModel.ĐVT" Width="1.5" PointX="0.75" PointY="1.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="taphoa_final_demoModel.Hàng_Hóa" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="taphoa_final_demoModel.Hóa_đơn" Width="1.5" PointX="3" PointY="8.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="taphoa_final_demoModel.Loại" Width="1.5" PointX="0.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="taphoa_final_demoModel.Nhân_viên" Width="1.5" PointX="0.75" PointY="8.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="taphoa_final_demoModel.PhanQuyen" Width="1.5" PointX="3" PointY="5.5" IsExpanded="true" />
+        <AssociationConnector Association="taphoa_final_demoModel.FK__Chi_tiết___ID_HD__32E0915F" ManuallyRouted="false" />
+        <AssociationConnector Association="taphoa_final_demoModel.FK__Chi_tiết___ID_HH__31EC6D26" ManuallyRouted="false" />
+        <AssociationConnector Association="taphoa_final_demoModel.FK__PhanQuyen__IdChu__38996AB5" ManuallyRouted="false" />
+        <AssociationConnector Association="taphoa_final_demoModel.FK__Hàng_Hóa__ID_DVT__2F10007B" ManuallyRouted="false" />
+        <AssociationConnector Association="taphoa_final_demoModel.FK__Hàng_Hóa__ID_loạ__2E1BDC42" ManuallyRouted="false" />
+        <AssociationConnector Association="taphoa_final_demoModel.FK__Hóa_đơn__ID_NV__2B3F6F97" ManuallyRouted="false" />
+        <AssociationConnector Association="taphoa_final_demoModel.FK__PhanQuyen__IdNV__37A5467C" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

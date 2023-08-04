@@ -15,7 +15,7 @@ namespace Demo_CNPM.Controllers
 {
     public class Hàng_HóaController : Controller
     {
-        private taphoa_finalEntities4 db = new taphoa_finalEntities4();
+        private taphoa_final_demoEntities4 db = new taphoa_final_demoEntities4();
 
 
 
@@ -25,7 +25,7 @@ namespace Demo_CNPM.Controllers
         }
 
         [HttpPost]
-        public ActionResult DangNhap(string user, string password)
+        public ActionResult DangNhap(string user, int password)
         {
             //check DB
             var nhanVien = db.Nhân_viên.SingleOrDefault(m => m.ID == user && m.Password == password);

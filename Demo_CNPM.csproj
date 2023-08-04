@@ -123,6 +123,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\BaoLoiController.cs" />
     <Compile Include="Controllers\Chi_tiết_hóa_đơnController.cs" />
+    <Compile Include="Controllers\DanhsachhoadonController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\Hàng_HóaController.cs" />
     <Compile Include="Controllers\Hóa_đơnController.cs" />
@@ -193,6 +194,18 @@
     <Content Include="Content\bootstrap.rtl.min.css" />
     <Content Include="Content\item.css" />
     <Content Include="Content\mystyle.css" />
+    <Content Include="Models\Model1.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Model1.edmx</DependentUpon>
+      <LastGenOutput>Model1.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\Model1.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Model1.edmx</DependentUpon>
+      <LastGenOutput>Model1.cs</LastGenOutput>
+    </Content>
+    <Content Include="Scripts\thanhtoanthanhcong.js" />
+    <Content Include="Scripts\thongbao.js" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Images\anh01.jpg" />
@@ -205,16 +218,6 @@
     <Content Include="Images\anh08.jpg" />
     <Content Include="Images\anh09.jpg" />
     <Content Include="Images\logo.jpg" />
-    <Content Include="Models\Model1.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Model1.edmx</DependentUpon>
-      <LastGenOutput>Model1.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="Models\Model1.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Model1.edmx</DependentUpon>
-      <LastGenOutput>Model1.cs</LastGenOutput>
-    </Content>
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.esm.js" />
@@ -289,6 +292,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Danhsachhoadon\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.rtl.min.css.map" />

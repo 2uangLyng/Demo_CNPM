@@ -26,7 +26,7 @@ namespace Demo_CNPM.Models
         public string Giới_tính { get; set; }
         public string Địa_chỉ { get; set; }
         public int SDT { get; set; }
-        public string Password { get; set; }
+        public Nullable<int> Password { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Hóa_đơn> Hóa_đơn { get; set; }
