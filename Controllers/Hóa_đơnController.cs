@@ -25,7 +25,7 @@ namespace Demo_CNPM.Controllers
 
         // GET: Hóa_đơn/Details/5
         [AdminAuthorize(idChucNang = 1)]
-        public ActionResult Details(string id)
+        public ActionResult Details(int? id)
         {
             if (id == null)
             {
@@ -36,7 +36,7 @@ namespace Demo_CNPM.Controllers
             {
                 return HttpNotFound();
             }
-            return View(hóa_đơn);
+            return RedirectToAction("Details", "Chi_tiết_hóa_đơn", new { id = id });
         }
 
         // GET: Hóa_đơn/Create
@@ -68,7 +68,7 @@ namespace Demo_CNPM.Controllers
 
         // GET: Hóa_đơn/Edit/5
         [AdminAuthorize(idChucNang = 1)]
-        public ActionResult Edit(string id)
+        public ActionResult Edit(int? id)
         {
             if (id == null)
             {
@@ -103,7 +103,7 @@ namespace Demo_CNPM.Controllers
 
         // GET: Hóa_đơn/Delete/5
         [AdminAuthorize(idChucNang = 1)]
-        public ActionResult Delete(string id)
+        public ActionResult Delete(int? id)
         {
             if (id == null)
             {
@@ -121,7 +121,7 @@ namespace Demo_CNPM.Controllers
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         [AdminAuthorize(idChucNang = 1)]
-        public ActionResult DeleteConfirmed(string id)
+        public ActionResult DeleteConfirmed(int? id)
         {
             Hóa_đơn hóa_đơn = db.Hóa_đơn.Find(id);
             db.Hóa_đơn.Remove(hóa_đơn);

@@ -53,10 +53,6 @@ namespace Demo_CNPM.Controllers
             ViewBag.QuantityCart = total_quantity_item;
             return PartialView("BagCart");
         }
-        public ActionResult CheckOut_Success()
-        {
-            return View();
-        }
         public ActionResult Update_Cart_Quantity(FormCollection form)
         {
             Cart cart = Session["Cart"] as Cart;
@@ -83,7 +79,7 @@ namespace Demo_CNPM.Controllers
             foreach (var item in cart.Items)
             {
                 Chi_tiết_hóa_đơn _oder_detail = new Chi_tiết_hóa_đơn();
-
+                
                 // Gán ID_HD cho _oder_detail sau khi _order đã có ID mới
                 _oder_detail.ID_HD = _order.ID;
                 _oder_detail.ID_HH = item._product.ID;
@@ -101,11 +97,13 @@ namespace Demo_CNPM.Controllers
             }
             db.SaveChanges();
             cart.ClearCart();
-            return Json(new { success = true });
-
-
+            return RedirectToAction("CheckOut_Success", "ShoppingCart");
         }
 
+        public ActionResult CheckOut_Success()
+        {
+            return View();
+        }
     }
 }
 

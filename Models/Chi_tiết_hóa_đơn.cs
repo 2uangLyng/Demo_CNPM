@@ -23,5 +23,6 @@ namespace Demo_CNPM.Models
     
         public virtual Hóa_đơn Hóa_đơn { get; set; }
         public virtual Hàng_Hóa Hàng_Hóa { get; set; }
+
     }
 }

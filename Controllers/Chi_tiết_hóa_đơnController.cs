@@ -11,7 +11,7 @@ using Demo_CNPM.Models;
 
 namespace Demo_CNPM.Controllers
 {
-    public class Chi_tiết_hóa_đơnController : Controller
+   public class Chi_tiết_hóa_đơnController : Controller
     {
         private taphoa_final_demoEntities4 db = new taphoa_final_demoEntities4();
 
@@ -25,7 +25,7 @@ namespace Demo_CNPM.Controllers
 
         // GET: Chi_tiết_hóa_đơn/Details/5
         [AdminAuthorize(idChucNang = 1)]
-        public ActionResult Details(string id)
+        public ActionResult Details(int? id)
         {
             if (id == null)
             {
@@ -70,7 +70,7 @@ namespace Demo_CNPM.Controllers
 
         // GET: Chi_tiết_hóa_đơn/Edit/5
         [AdminAuthorize(idChucNang = 1)]
-        public ActionResult Edit(string id)
+        public ActionResult Edit(int? id)
         {
             if (id == null)
             {
@@ -107,7 +107,7 @@ namespace Demo_CNPM.Controllers
 
         // GET: Chi_tiết_hóa_đơn/Delete/5
         [AdminAuthorize(idChucNang = 1)]
-        public ActionResult Delete(string id)
+        public ActionResult Delete(int? id)
         {
             if (id == null)
             {

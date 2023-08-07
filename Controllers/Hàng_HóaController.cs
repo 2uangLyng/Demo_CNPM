@@ -63,9 +63,8 @@ namespace Demo_CNPM.Controllers
             return View(hàng_Hóa.ToList());
         }
 
-        // GET: Hàng_Hóa/Details/5
-        [AdminAuthorize(idChucNang = 2)]
-        public ActionResult Details(string id)
+        // GET: Hàng_Hóa1/Details/5
+        public ActionResult Details(int? id)
         {
             if (id == null)
             {
@@ -79,8 +78,9 @@ namespace Demo_CNPM.Controllers
             return View(hàng_Hóa);
         }
 
-        // GET: Hàng_Hóa/Create
+
         [AdminAuthorize(idChucNang = 2)]
+        // GET: Hàng_Hóa1/Create
         public ActionResult Create()
         {
             ViewBag.ID_DVT = new SelectList(db.ĐVT, "ID", "Tên");
@@ -88,27 +88,16 @@ namespace Demo_CNPM.Controllers
             return View();
         }
 
-        // POST: Hàng_Hóa/Create
+        // POST: Hàng_Hóa1/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         [AdminAuthorize(idChucNang = 2)]
-        public ActionResult Create([Bind(Include = "ID,Tên,Số_Lượng,Giá_mua,Giá_bán,ID_loại,ID_DVT,SL_ton,Hinh_anh")] Hàng_Hóa hàng_Hóa, HttpPostedFileBase Hinh_anh)
+        public ActionResult Create([Bind(Include = "ID,Tên,Giá_mua,Giá_bán,ID_loại,ID_DVT,SL_ton,Hinh_anh")] Hàng_Hóa hàng_Hóa)
         {
             if (ModelState.IsValid)
             {
-                if (Hinh_anh != null)
-                {
-                    //Lấy tên file của hình được up lên
-                    var fileName = Path.GetFileName(Hinh_anh.FileName);
-                    //Tạo đường dẫn tới file
-                    var path = Path.Combine(Server.MapPath("~/Images"), fileName);
-                    //Lưu tên
-                    hàng_Hóa.Hinh_anh = fileName;
-                    //Save vào Images Folder
-                    Hinh_anh.SaveAs(path);
-                }
                 db.Hàng_Hóa.Add(hàng_Hóa);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -119,9 +108,10 @@ namespace Demo_CNPM.Controllers
             return View(hàng_Hóa);
         }
 
+
         // GET: Hàng_Hóa/Edit/5
         [AdminAuthorize(idChucNang = 2)]
-        public ActionResult Edit(string id)
+        public ActionResult Edit(int? id)
         {
             if (id == null)
             {
@@ -143,7 +133,7 @@ namespace Demo_CNPM.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [AdminAuthorize(idChucNang = 2)]
-        public ActionResult Edit([Bind(Include = "ID,Tên,Số_Lượng,Giá_mua,Giá_bán,ID_loại,ID_DVT,SL_ton,Hinh_anh")] Hàng_Hóa hàng_Hóa)
+        public ActionResult Edit([Bind(Include = "ID,Tên,Giá_mua,Giá_bán,ID_loại,ID_DVT,SL_ton,Hinh_anh")] Hàng_Hóa hàng_Hóa)
         {
             if (ModelState.IsValid)
             {
@@ -158,7 +148,7 @@ namespace Demo_CNPM.Controllers
 
         // GET: Hàng_Hóa/Delete/5
         [AdminAuthorize(idChucNang = 2)]
-        public ActionResult Delete(string id)
+        public ActionResult Delete(int? id)
         {
             if (id == null)
             {
@@ -172,10 +162,11 @@ namespace Demo_CNPM.Controllers
             return View(hàng_Hóa);
         }
 
+
         // POST: Hàng_Hóa/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(string id)
+        public ActionResult DeleteConfirmed(int id)
         {
             Hàng_Hóa hàng_Hóa = db.Hàng_Hóa.Find(id);
             db.Hàng_Hóa.Remove(hàng_Hóa);
