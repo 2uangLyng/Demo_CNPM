@@ -27,11 +27,8 @@ namespace Demo_CNPM.Controllers
         [AdminAuthorize(idChucNang = 1)]
         public ActionResult Details(int? id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Chi_tiết_hóa_đơn chi_tiết_hóa_đơn = db.Chi_tiết_hóa_đơn.Find(id);
+           
+            Chi_tiết_hóa_đơn chi_tiết_hóa_đơn = db.Chi_tiết_hóa_đơn.FirstOrDefault(hd => hd.ID_HD == id);
             if (chi_tiết_hóa_đơn == null)
             {
                 return HttpNotFound();

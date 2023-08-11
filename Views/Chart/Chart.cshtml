@@ -3,51 +3,56 @@
     ViewBag.Title = "Chart";
     Layout = "~/Views/Shared/_MasterLayout.cshtml";
 }
-<h3>Thống kế Hàng Hóa</h3>
-<div style="width: 30%; height: 30%">
-    <canvas id="myChart"></canvas>
+
+<h3>Thống kê Hàng Hóa</h3>
+<div style="width: 50%; height: 50%">
+    <canvas id="myChart1"></canvas>
 </div>
 
 <br />
-<h3>Thống kế Doanh Thu</h3>
-<div style="width: 30%; height: 30%">
-    <canvas id="ChartDoanhThu"></canvas>
+<h3>Thống kê Doanh Thu</h3>
+<div style="width: 50%; height: 50%">
+    <canvas id="myChart2"></canvas>
 </div>
+
+<br />
+
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script>
-    const cdt = document.getelementbyid('ChartDoanhThu');
+    const canvas1 = document.getElementById('myChart1');
+    const canvas2 = document.getElementById('myChart2');
 
-    new chart(cdt, {
+    new Chart(canvas1, {
         type: 'bar',
         data: {
             labels: ['01/08/2023', '02/08/2023', '03/08/2023', '04/08/2023', '05/08/2023', '06/08/2023', '07/08/2023'],
             datasets: [{
-                label: 'Doanh Thu',
-                data: [510000, 1000000, 450000, 150000, 45000, 60000, 300000],
-                borderwidth: 1
+                label: 'Tổng số lượng sản phẩm bán được',
+                data: [60, 35, 10, 15, 40, 38, 45],
+                borderWidth: 1
             }]
         },
         options: {
             scales: {
                 y: {
-                    beginatzero: true
+                    beginAtZero: true
                 }
             }
         }
     });
-</script>
 
-
-<script>
-    const ctx = document.getElementById('myChart');
-
-    new Chart(ctx, {
-        type: 'bar',
+    new Chart(canvas2, {
+        type: 'bar', 
         data: {
             labels: ['01/08/2023', '02/08/2023', '03/08/2023', '04/08/2023', '05/08/2023', '06/08/2023', '07/08/2023'],
             datasets: [{
-                label: 'Tổng Số Lượng Bán Ra',
-                data: [52, 105, 33, 15, 7, 10, 40],
+                label: 'Doanh Thu',
+                data: [1000000, 165500, 80000, 120000, 200000, 180000, 250000],
+                borderWidth: 1
+            },
+            {
+                label: 'Vốn',
+                data: [600000, 80000, 50000, 70000, 100000, 120000, 180000],
                 borderWidth: 1
             }]
         },
@@ -60,5 +65,3 @@
         }
     });
 </script>
-
-

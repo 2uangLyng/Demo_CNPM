@@ -121,7 +121,7 @@ namespace Demo_CNPM.Controllers
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         [AdminAuthorize(idChucNang = 1)]
-        public ActionResult DeleteConfirmed(int id)
+        public ActionResult DeleteConfirmed(int? id)
         {
             Hóa_đơn hóa_đơn = db.Hóa_đơn.Find(id);
             if (hóa_đơn == null)

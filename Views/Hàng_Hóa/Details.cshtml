@@ -4,9 +4,38 @@
     ViewBag.Title = "Details";
     Layout = "~/Views/Shared/_MasterLayout.cshtml";
 }
+<link href="~/Content/bootstrap.css" rel="stylesheet" />
+<style>
+    /* Tạo khung viền cho phần chi tiết */
+    .dl-horizontal {
+        border: 1px solid #ccc;
+        padding: 20px;
+        border-radius: 5px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Tùy chỉnh kiểu chữ cho các phần tử dt và dd */
+    dl.dt-horizontal dt,
+    dl.dt-horizontal dd {
+        display: inline-block;
+        margin-right: 10px; /* Khoảng cách giữa cặp dt và dd */
+        font-weight: bold;
+        color: #333;
+    }
+
+    /* Tạo hover effect cho nút Edit */
+    .btn-success:hover {
+        background-color: #4CAF50;
+    }
+
+    /* Tạo hover effect cho nút Back */
+    .btn-back:hover {
+        background-color: #ccc;
+    }
+</style>
+
 
 <h2>Details</h2>
-
 <div>
     <h4>Hàng_Hóa</h4>
     <hr />
@@ -70,6 +99,6 @@
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }, new { @class = "btn btn-success" }) |
     @Html.ActionLink("Back to List", "Index")
 </p>

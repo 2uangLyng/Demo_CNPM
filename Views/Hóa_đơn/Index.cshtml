@@ -5,7 +5,7 @@
     Layout = "~/Views/Shared/_MasterLayout.cshtml";
 }
 
-<a href="@Url.Action("Create")" class="btn btn-primary" style="height:60px">Create New</a>
+<a href="@Url.Action("Create")" class="btn btn-primary" style="height:60px">Tạo Mới</a>
 <table class="table">
     <tr>
         <th>
@@ -33,7 +33,7 @@
                 @Html.DisplayFor(modelItem => item.Tổng_SL)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Tổng_tiền)
+                @Html.DisplayFor(modelItem => item.Tổng_tiền) VND
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Nhân_viên.Tên)
