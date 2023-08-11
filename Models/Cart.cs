@@ -34,10 +34,10 @@ namespace Demo_CNPM.Models
         {
             return items.Sum(s => s._quantity);
         }
-        public decimal Total_money()
+        public int Total_money()
         {
             var total = items.Sum(s => s._quantity * s._product.Giá_bán);
-            return (decimal)total;
+            return total;
         }
         public void Update_quantity(int id, int _new_quan)
         {

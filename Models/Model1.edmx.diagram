@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="23d65541caea4179881dfec5a3c3291a" Name="Diagram1">
+      <Diagram DiagramId="23d65541caea4179881dfec5a3c3291a" Name="Diagram1" ZoomLevel="93">
         <EntityTypeShape EntityType="taphoa_final_demoModel.Chi_tiết_hóa_đơn" Width="1.5" PointX="5.25" PointY="1.25" IsExpanded="true" />
         <EntityTypeShape EntityType="taphoa_final_demoModel.ChucNang" Width="1.5" PointX="0.75" PointY="11.625" IsExpanded="true" />
         <EntityTypeShape EntityType="taphoa_final_demoModel.ĐVT" Width="1.5" PointX="0.75" PointY="1.75" IsExpanded="true" />
@@ -20,6 +20,7 @@
         <AssociationConnector Association="taphoa_final_demoModel.FK__Hàng_Hóa__ID_loạ__2E1BDC42" ManuallyRouted="false" />
         <AssociationConnector Association="taphoa_final_demoModel.FK__Hóa_đơn__ID_NV__2B3F6F97" ManuallyRouted="false" />
         <AssociationConnector Association="taphoa_final_demoModel.FK__PhanQuyen__IdNV__37A5467C" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="taphoa_final_demoModel.sysdiagram" Width="1.5" PointX="7.875" PointY="4.125" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

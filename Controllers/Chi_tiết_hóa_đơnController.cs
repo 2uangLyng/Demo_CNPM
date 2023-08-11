@@ -11,7 +11,7 @@ using Demo_CNPM.Models;
 
 namespace Demo_CNPM.Controllers
 {
-   public class Chi_tiết_hóa_đơnController : Controller
+    public class Chi_tiết_hóa_đơnController : Controller
     {
         private taphoa_final_demoEntities4 db = new taphoa_final_demoEntities4();
 
@@ -125,7 +125,7 @@ namespace Demo_CNPM.Controllers
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         [AdminAuthorize(idChucNang = 1)]
-        public ActionResult DeleteConfirmed(string id)
+        public ActionResult DeleteConfirmed(int? id)
         {
             Chi_tiết_hóa_đơn chi_tiết_hóa_đơn = db.Chi_tiết_hóa_đơn.Find(id);
             db.Chi_tiết_hóa_đơn.Remove(chi_tiết_hóa_đơn);

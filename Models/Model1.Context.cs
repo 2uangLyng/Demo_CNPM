@@ -33,5 +33,6 @@ namespace Demo_CNPM.Models
         public virtual DbSet<Loại> Loại { get; set; }
         public virtual DbSet<Nhân_viên> Nhân_viên { get; set; }
         public virtual DbSet<PhanQuyen> PhanQuyens { get; set; }
+        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
     }
 }

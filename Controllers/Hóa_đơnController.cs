@@ -121,9 +121,21 @@ namespace Demo_CNPM.Controllers
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         [AdminAuthorize(idChucNang = 1)]
-        public ActionResult DeleteConfirmed(int? id)
+        public ActionResult DeleteConfirmed(int id)
         {
             Hóa_đơn hóa_đơn = db.Hóa_đơn.Find(id);
+            if (hóa_đơn == null)
+            {
+                return HttpNotFound();
+            }
+            // Lấy danh sách các bản ghi Chi_tiết_hóa_đơn có liên quan đến Hóa_đơn
+            var chiTiets = db.Chi_tiết_hóa_đơn.Where(ct => ct.ID_HD == id).ToList();
+
+            // Xóa các bản ghi Chi_tiết_hóa_đơn liên quan
+            foreach (var chiTiet in chiTiets)
+            {
+                db.Chi_tiết_hóa_đơn.Remove(chiTiet);
+            }
             db.Hóa_đơn.Remove(hóa_đơn);
             db.SaveChanges();
             return RedirectToAction("Index");

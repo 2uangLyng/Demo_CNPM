@@ -53,6 +53,10 @@ namespace Demo_CNPM.Controllers
             ViewBag.QuantityCart = total_quantity_item;
             return PartialView("BagCart");
         }
+        public ActionResult CheckOut_Success()
+        {
+            return View();
+        }
         public ActionResult Update_Cart_Quantity(FormCollection form)
         {
             Cart cart = Session["Cart"] as Cart;
@@ -72,17 +76,24 @@ namespace Demo_CNPM.Controllers
 
             // Tạo hóa đơn mới (_order) và lưu vào cơ sở dữ liệu
             Hóa_đơn _order = new Hóa_đơn();
+            // Tính tổng số lượng mua và tổng tiền của giỏ hàng
+            int totalQuantity = cart.Total_quantity();
+            int totalPrice = cart.Total_money();
+            _order.Tổng_tiền = totalPrice;
+            _order.Tổng_SL = totalQuantity;
             _order.Ngày_bán = DateTime.Now;
+
             _order.ID_NV = user2;
-                db.Hóa_đơn.Add(_order);
+            db.Hóa_đơn.Add(_order);
 
             foreach (var item in cart.Items)
             {
                 Chi_tiết_hóa_đơn _oder_detail = new Chi_tiết_hóa_đơn();
-                
+
                 // Gán ID_HD cho _oder_detail sau khi _order đã có ID mới
                 _oder_detail.ID_HD = _order.ID;
                 _oder_detail.ID_HH = item._product.ID;
+                //
                 _oder_detail.SL = item._quantity;
                 _oder_detail.Đơn_giá = item._product.Giá_bán;
                 _oder_detail.Thành_tiền = item._quantity * item._product.Giá_bán;
@@ -93,18 +104,21 @@ namespace Demo_CNPM.Controllers
                     // Lưu trữ thông tin Hàng Hóa (_product)
                     var update_quan_pro = p.SL_ton - item._quantity;
                     p.SL_ton = update_quan_pro;
+                    // Lưu dữ liệu vào TempData để truyền tới trang view của hóa đơn
+                    TempData["TotalQuantity"] = totalQuantity;
+                    TempData["TotalPrice"] = totalPrice;
                 }
+
+
             }
             db.SaveChanges();
             cart.ClearCart();
+
             return RedirectToAction("CheckOut_Success", "ShoppingCart");
+
         }
 
-        public ActionResult CheckOut_Success()
-        {
-            return View();
-        }
     }
 }
 
-    
+

@@ -3,57 +3,62 @@
     ViewBag.Title = "Chart";
     Layout = "~/Views/Shared/_MasterLayout.cshtml";
 }
-
-<div>
+<h3>Thống kế Hàng Hóa</h3>
+<div style="width: 30%; height: 30%">
     <canvas id="myChart"></canvas>
 </div>
 
+<br />
+<h3>Thống kế Doanh Thu</h3>
+<div style="width: 30%; height: 30%">
+    <canvas id="ChartDoanhThu"></canvas>
+</div>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    const cdt = document.getelementbyid('ChartDoanhThu');
 
-const labels = Utils.months({count: 7});
-const data = {
-  labels: labels,
-  datasets: [{
-    label: 'My First Dataset',
-    data: [65, 59, 80, 81, 56, 55, 40],
-    backgroundColor: [
-      'rgba(255, 99, 132, 0.2)',
-      'rgba(255, 159, 64, 0.2)',
-      'rgba(255, 205, 86, 0.2)',
-      'rgba(75, 192, 192, 0.2)',
-      'rgba(54, 162, 235, 0.2)',
-      'rgba(153, 102, 255, 0.2)',
-      'rgba(201, 203, 207, 0.2)'
-    ],
-    borderColor: [
-      'rgb(255, 99, 132)',
-      'rgb(255, 159, 64)',
-      'rgb(255, 205, 86)',
-      'rgb(75, 192, 192)',
-      'rgb(54, 162, 235)',
-      'rgb(153, 102, 255)',
-      'rgb(201, 203, 207)'
-    ],
-    borderWidth: 1
-  }]
-};
-// </block:setup>
+    new chart(cdt, {
+        type: 'bar',
+        data: {
+            labels: ['01/08/2023', '02/08/2023', '03/08/2023', '04/08/2023', '05/08/2023', '06/08/2023', '07/08/2023'],
+            datasets: [{
+                label: 'Doanh Thu',
+                data: [510000, 1000000, 450000, 150000, 45000, 60000, 300000],
+                borderwidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginatzero: true
+                }
+            }
+        }
+    });
+</script>
 
-// <block:config:0>
-    const config = {
-    type: 'bar',
-    data: data,
-    options: {
-    scales: {
-    y: {
-    beginAtZero: true
-    }
-    }
-    },
-    };
-    // </block:config>
 
-    module.exports = {
-    actions: [],
-    config: config,
-    };
+<script>
+    const ctx = document.getElementById('myChart');
+
+    new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: ['01/08/2023', '02/08/2023', '03/08/2023', '04/08/2023', '05/08/2023', '06/08/2023', '07/08/2023'],
+            datasets: [{
+                label: 'Tổng Số Lượng Bán Ra',
+                data: [52, 105, 33, 15, 7, 10, 40],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+</script>
+
+

@@ -12,16 +12,12 @@ namespace Demo_CNPM.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Chi_tiết_hóa_đơn
+    public partial class sysdiagram
     {
-        public int ID { get; set; }
-        public Nullable<int> ID_HH { get; set; }
-        public Nullable<int> ID_HD { get; set; }
-        public Nullable<int> SL { get; set; }
-        public Nullable<int> Đơn_giá { get; set; }
-        public Nullable<int> Thành_tiền { get; set; }
-    
-        public virtual Hóa_đơn Hóa_đơn { get; set; }
-        public virtual Hàng_Hóa Hàng_Hóa { get; set; }
+        public string name { get; set; }
+        public int principal_id { get; set; }
+        public int diagram_id { get; set; }
+        public Nullable<int> version { get; set; }
+        public byte[] definition { get; set; }
     }
 }
