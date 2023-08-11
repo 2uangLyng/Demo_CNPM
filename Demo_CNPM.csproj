@@ -122,6 +122,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\BaoLoiController.cs" />
+    <Compile Include="Controllers\ChartController.cs" />
     <Compile Include="Controllers\Chi_tiết_hóa_đơnController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\Hàng_HóaController.cs" />
@@ -289,6 +290,7 @@
     <Content Include="Views\Hàng_Hóa\DangXuat.cshtml" />
     <Content Include="Views\BaoLoi\KhongCoQuyen.cshtml" />
     <Content Include="Views\ShoppingCart\CheckOut_Success.cshtml" />
+    <Content Include="Views\Chart\Chart.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
